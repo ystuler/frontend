@@ -1,5 +1,5 @@
 .tailer{
-   @apply text-center;
+   @apply text-center p-1;
 }
 .taino{
    @apply  text-sm ;

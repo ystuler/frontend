@@ -13,8 +13,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <ChangeLanguageComponent></ChangeLanguageComponent>
-  <test-component></test-component>
+  <ChangeLanguageComponent />
+  <test-component />
 </template>
 
 <style scoped>

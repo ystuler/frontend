@@ -4,14 +4,13 @@
 
 <template>
   <div class="box">
-    <div class='tailer'>
-      {{$t('me.i')}}
+    <div class="tailer">
+      {{ $t('me.i') }}
     </div>
     <div class="taino">
-      {{$t('me.name')}}
+      {{ $t('me.name') }}
     </div>
   </div>
-
 </template>
 
 <style scoped>
