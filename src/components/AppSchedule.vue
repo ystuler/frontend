@@ -16,7 +16,8 @@ import AppLessonList from './AppLessonList.vue';
 <style scoped>
 .app-schedule-title {
   font-size: 32px;
-  margin-top: 24px;
+  margin-top: 44px;
+  font-weight: 600;
 }
 
 .app-schedule-container {
@@ -27,7 +28,7 @@ import AppLessonList from './AppLessonList.vue';
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   padding: 0 64px;
 }
 </style>

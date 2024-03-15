@@ -23,6 +23,6 @@ defineProps<AppLessonProps>();
 .app-lesson-info {
   display:flex;
   width: 100%;
-  background-color: rgb(229, 233, 233);
+  background-color: rgb(201, 209, 209);
 }
 </style>

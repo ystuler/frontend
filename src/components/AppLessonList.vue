@@ -17,5 +17,9 @@ const lessons = computed(() => lessonStore.lessons)
     :subgroup="lesson.subgroup"
     :teacher="lesson.teacher"
     :audience="lesson.audience"
+    class="app-lesson-info" 
   />
 </template>
+
+<style scoped>
+</style>
