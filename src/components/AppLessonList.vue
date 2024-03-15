@@ -3,3 +3,8 @@
 import AppLesson from './AppLesson.vue';
 import { useLessonStore } from '../stores/lesson.store';
 </script>
+<template>
+    <AppLesson>
+        
+    </AppLesson>
+</template>

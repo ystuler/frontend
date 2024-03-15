@@ -4,7 +4,9 @@ import AppLessonList from './AppLessonList.vue';
 </script>
 
 <template>
-
+    <AppLessonList>
+        
+    </AppLessonList>
 </template>
 
 

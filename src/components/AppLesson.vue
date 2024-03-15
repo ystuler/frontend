@@ -12,6 +12,19 @@ export interface AppLessonProps {
 
 <template>
   <div class="day">
-    {{ time }}
+    <p>
+      {{ time }}
+    </p>
   </div>
 </template>
+<style scoped>
+.day {
+  display:flex;
+  width:30px;
+  height: 30px;
+  background-color: aqua;
+}
+.time {
+
+}
+</style>
