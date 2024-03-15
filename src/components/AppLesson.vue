@@ -7,24 +7,22 @@ export interface AppLessonProps {
   teacher: string;
   audience: string;
 }
+
+defineProps<AppLessonProps>();
 //Включает в себя всю информацию о предмете
 </script>
 
 <template>
-  <div class="day">
+  <div class="app-lesson-info">
     <p>
       {{ time }}
     </p>
   </div>
 </template>
 <style scoped>
-.day {
+.app-lesson-info {
   display:flex;
-  width:30px;
-  height: 30px;
-  background-color: aqua;
-}
-.time {
-
+  width: 100%;
+  background-color: rgb(229, 233, 233);
 }
 </style>
