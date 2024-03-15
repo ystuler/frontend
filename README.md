@@ -1,6 +1,6 @@
 # Vue 3 + TypeScript + Vite + Tailwind
 
-`<pnpm run install>` 
+`<pnpm  install>` 
 `<pnpm run lint>` -> `<pnpm run lint --fix>` - for fixes warnings
 
 
