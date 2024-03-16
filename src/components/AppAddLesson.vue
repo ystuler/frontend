@@ -8,19 +8,10 @@ import AppInput from './AppInput.vue';
     <p class="app-add-lesson-title">
       Дополнить расписание
     </p>
-    <label>Время (начало и окончание) и дата</label>
     <div class="date-time-container">
       <AppInput 
         id="start-time" 
-        placeholder="hh:mm"
-      />
-      <AppInput 
-        id="end-time" 
-        placeholder="hh:mm"
-      />
-      <AppInput 
-        id="date" 
-        placeholder="dd:mm::yyyy"
+        input-type="text"
       />
     </div>
   </div>
