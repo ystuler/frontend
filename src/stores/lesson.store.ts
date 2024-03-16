@@ -6,6 +6,7 @@ export interface Lesson {
     timeStart: number;
     timeEnd: number;
     name: string;
+    type: string;
     subgroup: number;
     teacher: string;
     audience: string;

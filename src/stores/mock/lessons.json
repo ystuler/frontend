@@ -1,17 +1,19 @@
 [
     {
         "id": 1,
-        "timeStart": 123,
-        "timeEnd": 456,
+        "timeStart": 1488,
+        "timeEnd": 5555,
+        "name":"Основы инновационной деятельности и делового письма",
         "subgroup": 2,
-        "teacher": "Vologin_top4ic",
-        "audience": "666"
+        "teacher": "Кочерова В.В.",
+        "audience": "Акт. зал"
     },
 
     {
         "id": 2,
         "timeStart": 123,
         "timeEnd": 456,
+        "name":"СЕТИ 476305 пар",
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -21,6 +23,7 @@
         "id": 3,
         "timeStart": 123,
         "timeEnd": 456,
+        "name":"СЕТИ 476305 пар",
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -30,6 +33,7 @@
         "id": 4,
         "timeStart": 123,
         "timeEnd": 456,
+        "name":"СЕТИ 476305 пар",
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -39,6 +43,7 @@
         "id": 5,
         "timeStart": 123,
         "timeEnd": 456,
+        "name":"СЕТИ 476305 пар",
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -48,42 +53,7 @@
         "id": 6,
         "timeStart": 123,
         "timeEnd": 456,
-        "subgroup": 2,
-        "teacher": "Vologin_top4ic",
-        "audience": "666"
-    },
-    
-    {
-        "id": 7,
-        "timeStart": 123,
-        "timeEnd": 456,
-        "subgroup": 2,
-        "teacher": "Vologin_top4ic",
-        "audience": "666"
-    },
-    
-    {
-        "id": 8,
-        "timeStart": 123,
-        "timeEnd": 456,
-        "subgroup": 2,
-        "teacher": "Vologin_top4ic",
-        "audience": "666"
-    },
-    
-    {
-        "id": 9,
-        "timeStart": 123,
-        "timeEnd": 456,
-        "subgroup": 2,
-        "teacher": "Vologin_top4ic",
-        "audience": "666"
-    },
-    
-    {
-        "id": 10,
-        "timeStart": 123,
-        "timeEnd": 456,
+        "name":"СЕТИ 476305 пар",
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
