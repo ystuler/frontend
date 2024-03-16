@@ -14,7 +14,7 @@ defineProps<AppLessonProps>();
 
 <template>
   <div class="app-lesson-info">
-    <p>
+    <p> 
       {{ time }}
     </p>
   </div>

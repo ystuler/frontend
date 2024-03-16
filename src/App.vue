@@ -13,6 +13,6 @@ import './style.css'
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #e9e8e8;
+  background-color: #D9D9D9;
 }
 </style>
