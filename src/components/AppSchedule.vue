@@ -22,9 +22,10 @@ import AppLessonList from './AppLessonList.vue';
 
 .app-schedule-container {
   width: 50vw;
-  height: 90vh;
-  border-radius: 40px;
-  background-color: rgb(255, 254, 254);
+  height: 100vh;
+  min-width: 480px;
+  border-left: 2px solid rgb(199, 199, 199);
+  border-right: 2px solid rgb(199, 199, 199);
   display: flex;
   flex-direction: column;
   align-items: center;
