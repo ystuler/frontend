@@ -3,7 +3,8 @@ import lessons from './mock/lessons.json'
 
 export interface Lesson {
     id: number;
-    time: number;
+    timeStart: number;
+    timeEnd: number;
     name: string;
     subgroup: number;
     teacher: string;

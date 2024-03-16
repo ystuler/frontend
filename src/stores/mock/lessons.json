@@ -1,7 +1,8 @@
 [
     {
         "id": 1,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -9,7 +10,8 @@
 
     {
         "id": 2,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -17,7 +19,8 @@
 
     {
         "id": 3,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -25,7 +28,8 @@
 
     {
         "id": 4,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -33,7 +37,8 @@
 
     {
         "id": 5,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -41,7 +46,8 @@
 
     {
         "id": 6,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -49,7 +55,8 @@
     
     {
         "id": 7,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -57,7 +64,8 @@
     
     {
         "id": 8,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -65,7 +73,8 @@
     
     {
         "id": 9,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"
@@ -73,7 +82,8 @@
     
     {
         "id": 10,
-        "time": 123,
+        "timeStart": 123,
+        "timeEnd": 456,
         "subgroup": 2,
         "teacher": "Vologin_top4ic",
         "audience": "666"

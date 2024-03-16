@@ -1,7 +1,8 @@
 <script setup lang="ts">
 
 export interface AppLessonProps {
-  time: number;
+  timeStart: number;
+  timeEnd: number;
   name: string;
   subgroup: number;
   teacher: string;
@@ -15,7 +16,13 @@ defineProps<AppLessonProps>();
 <template>
   <div class="app-lesson-info">
     <p> 
-      {{ time }}
+      {{ timeStart }}
+    </p>
+    <p>
+      {{ timeEnd }}
+    </p>
+    <p>
+      {{ name }}
     </p>
   </div>
 </template>
@@ -23,6 +30,6 @@ defineProps<AppLessonProps>();
 .app-lesson-info {
   display:flex;
   width: 100%;
-  background-color: rgb(201, 209, 209);
+  background-color: rgb(239, 239, 239);
 }
 </style>
