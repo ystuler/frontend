@@ -10,13 +10,16 @@ import AppAddLesson from '../components/AppAddLesson.vue';
     <div class="main-container-block">
       <AppSchedule />
     </div>
-    <div class="main-container-block">
+    <div class="main-container-block main-container-block__add-lesson">
       <AppAddLesson />
     </div>
   </div>
 </template>
 
 <style scoped>
+.main-container-block__add-lesson {
+  padding: 0 32px;
+}
 .main-container-block {
   width: 100%;
   display: flex;

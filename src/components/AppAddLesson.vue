@@ -10,14 +10,58 @@ import AppInput from './AppInput.vue';
     </p>
     <div class="date-time-container">
       <AppInput 
-        id="start-time" 
-        input-type="text"
+        id="start-time"
+        input-type="date-time"
+        label="Дата и время*"
       />
     </div>
+    <AppInput 
+      id="lesson"
+      input-type="text"
+      label="Название предмета*"
+      placeholder="Физика"
+    />
+    <AppInput 
+      id="teacher"
+      input-type="text"
+      label="ФИО преподавателя*"
+      placeholder="Иванов И.И."
+    />
+    <AppInput 
+      id="audience"
+      input-type="text"
+      label="Аудитория*"
+      placeholder="А-332"
+    />
+    <AppInput 
+      id="type"
+      input-type="text"
+      label="Вид занятия*"
+      placeholder="Лекция"
+    />
+    <AppInput 
+      id="subgroup"
+      input-type="text"
+      label="Подгруппа"
+      placeholder="А-332"
+    />
+    <button class="app-add-lesson-container__button">
+      Добавить в расписание
+    </button>
   </div>
 </template>
 
 <style scoped>
+.app-add-lesson-container__button {
+  width: 100%;
+  background-color: rgb(231, 136, 112);
+  height: 60px;
+  border-radius: 35px;
+  margin-top: 20px;
+  color:#EFEFEF;
+  font-size: 24px;
+  box-shadow: 1px 4px 4px rgba(126, 11, 11, 0.5);
+}
 .date-time-container {
   display: flex;
   align-items: end;
@@ -36,5 +80,6 @@ import AppInput from './AppInput.vue';
   flex-direction: column;
   padding: 44px 60px;
   gap: 20px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.205);
 }
 </style>
