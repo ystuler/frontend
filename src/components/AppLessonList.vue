@@ -12,7 +12,8 @@ const lessons = computed(() => lessonStore.lessons)
   <AppLesson
     v-for="lesson in lessons" 
     :key="lesson.id"
-    :time="lesson.time"
+    :time-start="lesson.timeStart"
+    :time-end="lesson.timeEnd"
     :name="lesson.name"
     :subgroup="lesson.subgroup"
     :teacher="lesson.teacher"
