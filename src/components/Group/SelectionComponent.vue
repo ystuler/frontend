@@ -2,29 +2,89 @@
   <div class="grid-container">
     <div class="square">
       <div class="rectangle">
-        <svg class="star" width="45.000000" height="57.000000" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg class="star" width="45.000000" height="57.000000" viewBox="0 0 25 23" fill="none"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <desc>
           </desc>
           <defs/>
-          <path id="Звезда 1" d="M12 -3.06e-5L9.08 8.63L-0.37 8.63L7.27 13.97L4.35 22.61L12 17.27L19.64 22.61L16.72 13.97L24.36 8.63L14.91 8.63L12 -3.06e-5Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
-          <path id="Звезда 1" d="M9.08 8.63L-0.37 8.63L7.27 13.97L4.35 22.61L12 17.27L19.64 22.61L16.72 13.97L24.36 8.63L14.91 8.63L12 -3.06e-5L9.08 8.63ZM12 3.12L9.79 9.63L2.81 9.63L8.46 13.58L6.27 20.05L12 16.05L17.72 20.05L15.53 13.58L21.18 9.63L14.2 9.63L12 3.12Z" fill="#8A8A8A" fill-opacity="1.000000" fill-rule="evenodd"/>
+          <path id="Звезда 1"
+                d="M12 -3.06e-5L9.08 8.63L-0.37 8.63L7.27 13.97L4.35 22.61L12 17.27L19.64 22.61L16.72 13.97L24.36 8.63L14.91 8.63L12 -3.06e-5Z"
+                fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+          <path id="Звезда 1"
+                d="M9.08 8.63L-0.37 8.63L7.27 13.97L4.35 22.61L12 17.27L19.64 22.61L16.72 13.97L24.36 8.63L14.91 8.63L12 -3.06e-5L9.08 8.63ZM12 3.12L9.79 9.63L2.81 9.63L8.46 13.58L6.27 20.05L12 16.05L17.72 20.05L15.53 13.58L21.18 9.63L14.2 9.63L12 3.12Z"
+                fill="#8A8A8A" fill-opacity="1.000000" fill-rule="evenodd"/>
         </svg>
 
         <span class="FavoriteGroup">{{ holder }}</span>
       </div>
       <div class="rectangle2">
-
+        <div class="scrollWrapper">
+          <div class="forScroll">
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+            <div class="groups">
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
+
   </div>
 </template>
 
 <style scoped>
+::-webkit-scrollbar {
+  width: 20px;
+
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(196, 196, 196);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  transition: background 3s ease;
+  background: rgb(175, 172, 172);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(157, 154, 154);
+}
+
 .grid-container {
   display: grid;
   height: 100vh;
   place-items: center;
+}
+
+.forScroll {
+  width: 28.9vw;
+  height: 53.4vh;
+  overflow: auto;
+  overflow-x: hidden;
+
 }
 
 .rectangle {
@@ -38,11 +98,19 @@
   overflow: hidden;
   z-index: 2;
 }
-.star{
+
+.star {
   padding-left: 10px;
 }
 
-.rectangle2{
+.groups {
+  width: 27.1vw;
+  height: 5vh;
+  background: black;
+
+}
+
+.rectangle2 {
   width: 29.9vw;
   height: 53.9vh;
   background: rgb(241, 241, 241);
@@ -51,14 +119,7 @@
   z-index: 1;
 
 }
-.scroll {
-  width: 2vw;
-  height: 50vh;
-  background-color: yellow;
-  position: absolute;
-  right: 10px;
-  top: 70px;
-}
+
 
 .FavoriteGroup {
   font-size: 24px;
@@ -82,7 +143,7 @@
 }
 </style>
 <script setup lang="ts">
-import { useGroupStore} from "../../stores/group.store.ts";
+import {useGroupStore} from "../../stores/group.store.ts";
 import {computed} from "vue";
 
 const groupStore = useGroupStore();
