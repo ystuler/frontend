@@ -11,10 +11,16 @@
           <div class="forScroll">
             <ul class="cursor-pointer">
               <li v-for="group in groupStore.groups" :key="group.id">
-                <div @click="toggleFacultyVisibility(group.id)" class="boxF"><span class="p">{{ group.Faculty }}</span></div>
-                <ul v-if="activeFaculty ===group.id">
+                <div @click="toggleFacultyVisibility(group.id)" class="boxF">
+                  <span class="p">{{ group.Faculty }}</span>
+                  <span v-html="activeFaculty === group.id ? arrowSVG : arrowSVG2"> </span>
+                </div>
+                <ul v-if="activeFaculty === group.id">
                   <li v-for="direction in group.Direction" :key="direction.id">
-                    <div class="boxF" @click="toggleGroupVisibility(direction.id)"><span class="p">{{ direction.name_group }}</span></div>
+                    <div class="boxF" @click="toggleGroupVisibility(direction.id)">
+                      <span class="p">{{ direction.name_group }}</span>
+                      <span v-html="activeGroup === direction.id ? arrowSVG : arrowSVG2"> </span>
+                    </div>
                     <ul v-if="activeGroup === direction.id">
                       <li v-for="groupName in direction.list" :key="groupName.id">
                         <div class="boxF" @click="toggleFavoriteGroup(groupName.id)">
@@ -31,17 +37,16 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
-import { starSVG, starSVG2,starSVG3,starSVG4 } from "../../utils/StarSVG.ts";
+import { starSVG, starSVG2, starSVG3, starSVG4 } from "../../utils/StarSVG.ts";
+import { arrowSVG, arrowSVG2 } from "../../utils/arrowSVG.ts";
 import { useGroupStore } from "../../stores/group.store.ts";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 const groupStore = useGroupStore();
-
 const activeFaculty = ref<number | null>(null);
 const activeGroup = ref<number | null>(null);
 const selectedGroupNameId = ref<number | null>(null);
@@ -62,14 +67,24 @@ const toggleFacultyVisibility = (groupId: number) => {
   }
 };
 
-
 const holder = ref("Избранная группа будет тут...");
-const toggleFavoriteGroup = (groupNameId: number) => {
-  holder.value = groupStore.groups.find(group => group.Direction.some(direction => direction.list.some(groupName => groupName.id === groupNameId)))?.Direction.flatMap(direction => direction.list).find(groupName => groupName.id === groupNameId)?.name || "";
 
+const toggleFavoriteGroup = (groupNameId: number) => {
+  const foundGroup = groupStore.groups.find(group =>
+      group.Direction.some(direction =>
+          direction.list.some(groupName => groupName.id === groupNameId)
+      )
+  );
+
+  const allGroupNamesInFoundGroup = foundGroup?.Direction.flatMap(direction => direction.list);
+
+  const foundGroupName = allGroupNamesInFoundGroup?.find(groupName => groupName.id === groupNameId)?.name || "";
+
+  holder.value = foundGroupName;
   selectedGroupNameId.value = groupNameId;
 };
 </script>
+
 
 <style scoped>
 ::-webkit-scrollbar {
