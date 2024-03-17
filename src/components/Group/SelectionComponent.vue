@@ -2,7 +2,7 @@
   <div class="grid-container noselect">
     <div class="square">
       <div class="rectangle">
-        <div class="star" v-html="starSVG"></div>
+        <div class="star" v-html="selectedGroupNameId === null ? starSVG : starSVG4"></div>
 
         <span class="FavoriteGroup">{{ holder }}</span>
       </div>
@@ -11,13 +11,16 @@
           <div class="forScroll">
             <ul class="cursor-pointer">
               <li v-for="group in groupStore.groups" :key="group.id">
-                <div @click="toggleFacultyVisibility(group.id)" class="boxF"><span >{{ group.Faculty }}</span></div>
+                <div @click="toggleFacultyVisibility(group.id)" class="boxF"><span class="p">{{ group.Faculty }}</span></div>
                 <ul v-if="activeFaculty ===group.id">
                   <li v-for="direction in group.Direction" :key="direction.id">
-                    <div class="boxF" @click="toggleGroupVisibility(direction.id)"><span >{{ direction.name_group }}</span></div>
+                    <div class="boxF" @click="toggleGroupVisibility(direction.id)"><span class="p">{{ direction.name_group }}</span></div>
                     <ul v-if="activeGroup === direction.id">
                       <li v-for="groupName in direction.list" :key="groupName.id">
-                        <div class="boxF" @click="toggleFavoriteGroup(groupName.name)"><span > {{ groupName.name }}</span></div>
+                        <div class="boxF" @click="toggleFavoriteGroup(groupName.id)">
+                          <span class="star" v-html="groupName.id === selectedGroupNameId ? starSVG3 : starSVG2"></span>
+                          <span class="p2">{{ groupName.name }}</span>
+                        </div>
                       </li>
                     </ul>
                   </li>
@@ -31,6 +34,42 @@
 
   </div>
 </template>
+
+<script setup lang="ts">
+import { starSVG, starSVG2,starSVG3,starSVG4 } from "../../utils/StarSVG.ts";
+import { useGroupStore } from "../../stores/group.store.ts";
+import { computed, ref } from "vue";
+
+const groupStore = useGroupStore();
+
+const activeFaculty = ref<number | null>(null);
+const activeGroup = ref<number | null>(null);
+const selectedGroupNameId = ref<number | null>(null);
+
+const toggleGroupVisibility = (directionId: number) => {
+  if (activeGroup.value === directionId) {
+    activeGroup.value = null;
+  } else {
+    activeGroup.value = directionId;
+  }
+};
+
+const toggleFacultyVisibility = (groupId: number) => {
+  if (activeFaculty.value === groupId) {
+    activeFaculty.value = null;
+  } else {
+    activeFaculty.value = groupId;
+  }
+};
+
+
+const holder = ref("Избранная группа будет тут...");
+const toggleFavoriteGroup = (groupNameId: number) => {
+  holder.value = groupStore.groups.find(group => group.Direction.some(direction => direction.list.some(groupName => groupName.id === groupNameId)))?.Direction.flatMap(direction => direction.list).find(groupName => groupName.id === groupNameId)?.name || "";
+
+  selectedGroupNameId.value = groupNameId;
+};
+</script>
 
 <style scoped>
 ::-webkit-scrollbar {
@@ -58,7 +97,11 @@
   height: 100vh;
   place-items: center;
 }
-.boxF{
+.p2{
+  padding-left: 0.5vw;
+
+}
+.boxF {
   width: 27.1vw;
   height: 5vh;
   border: 0.13rem solid rgb(100, 99, 99);
@@ -70,8 +113,13 @@
   color: rgb(196, 194, 194);
   overflow: hidden;
   white-space: nowrap;
-  padding-left: 1vw;
   text-overflow: ellipsis;
+  align-items: center;
+  display: flex;
+
+}
+.p{
+  padding-left: 1vw;
 
 }
 .forScroll {
@@ -97,7 +145,9 @@
 .star {
   padding-left: 10px;
 }
-
+.star2 {
+  padding-left: 10px;
+}
 text {
   user-select: none;
 }
@@ -145,36 +195,3 @@ text {
   user-select: none;
 }
 </style>
-<script setup lang="ts">
-import starSVG from "../../utils/StarSVG.ts";
-import {useGroupStore} from "../../stores/group.store.ts";
-import {computed, ref} from "vue";
-
-const groupStore = useGroupStore();
-
-const activeFaculty = ref<number | null>(null);
-const activeGroup = ref<number | null>(null);
-
-const toggleGroupVisibility = (directionId: number) => {
-  if (activeGroup.value === directionId) {
-    activeGroup.value = null;
-  } else {
-    activeGroup.value = directionId;
-  }
-};
-const toggleFacultyVisibility = (groupId: number) => {
-  if (activeFaculty.value === groupId) {
-    activeFaculty.value = null;
-  } else {
-    activeFaculty.value = groupId;
-  }
-};
-
-const FavoriteGroup = ""
-
-const holder = ref("Избранная группа будет тут...")
-const toggleFavoriteGroup = (SubGroupName: string) => {
-  holder.value = SubGroupName
-}
-
-</script>
