@@ -8,11 +8,13 @@ export interface Group {
 }
 
 interface Direction {
+    id: number;
     name_group: string;
     list: GroupName[];
 }
 
 interface GroupName {
+    id: number;
     name: string;
 }
 

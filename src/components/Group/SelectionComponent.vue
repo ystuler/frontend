@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-container">
+  <div class="grid-container noselect">
     <div class="square">
       <div class="rectangle">
         <svg class="star" width="45.000000" height="57.000000" viewBox="0 0 25 23" fill="none"
@@ -20,30 +20,21 @@
       <div class="rectangle2">
         <div class="scrollWrapper">
           <div class="forScroll">
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
-            <div class="groups">
-            </div>
+            <ul class="cursor-pointer">
+              <li v-for="group in groupStore.groups" :key="group.id">
+                <div @click="toggleFacultyVisibility(group.id)" class="boxF"><span >{{ group.Faculty }}</span></div>
+                <ul v-if="activeFaculty ===group.id">
+                  <li v-for="direction in group.Direction" :key="direction.id">
+                    <div class="boxF" @click="toggleGroupVisibility(direction.id)"><span >{{ direction.name_group }}</span></div>
+                    <ul v-if="activeGroup === direction.id">
+                      <li v-for="groupName in direction.list" :key="groupName.id">
+                        <div class="boxF" @click="toggleFavoriteGroup(groupName.name)"><span > {{ groupName.name }}</span></div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -78,7 +69,16 @@
   height: 100vh;
   place-items: center;
 }
+.boxF{
+  width: 27.1vw;
+  height: 5vh;
+  border: 0.13rem solid rgb(100, 99, 99);
+  border-top: none;
+  border-left: none;
 
+
+
+}
 .forScroll {
   width: 28.9vw;
   height: 53.4vh;
@@ -101,6 +101,10 @@
 
 .star {
   padding-left: 10px;
+}
+
+text {
+  user-select: none;
 }
 
 .groups {
@@ -141,16 +145,40 @@
   position: relative;
 
 }
+
+.noselect {
+  user-select: none;
+}
 </style>
 <script setup lang="ts">
 import {useGroupStore} from "../../stores/group.store.ts";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 
 const groupStore = useGroupStore();
 
-const groups = computed(() => groupStore.groups)
+const activeFaculty = ref<number | null>(null);
+const activeGroup = ref<number | null>(null);
+
+const toggleGroupVisibility = (directionId: number) => {
+  if (activeGroup.value === directionId) {
+    activeGroup.value = null;
+  } else {
+    activeGroup.value = directionId;
+  }
+};
+const toggleFacultyVisibility = (groupId: number) => {
+  if (activeFaculty.value === groupId) {
+    activeFaculty.value = null;
+  } else {
+    activeFaculty.value = groupId;
+  }
+};
 
 const FavoriteGroup = ""
-const holder = "Избранная группа будет тут..."
+
+const holder = ref("Избранная группа будет тут...")
+const toggleFavoriteGroup = (SubGroupName: string) => {
+  holder.value = SubGroupName
+}
 
 </script>
