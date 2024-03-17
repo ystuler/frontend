@@ -69,6 +69,7 @@ const toggleFacultyVisibility = (groupId: number) => {
 
 const holder = ref("Избранная группа будет тут...");
 
+//todo переписать toggleFavoriteGroup совершенно не чиатемая функция
 const toggleFavoriteGroup = (groupNameId: number) => {
   const foundGroup = groupStore.groups.find(group =>
       group.Direction.some(direction =>
