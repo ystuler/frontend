@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+
 //Поле ввода
 export interface AppInputProps {
   id: string;
@@ -6,8 +8,24 @@ export interface AppInputProps {
   placeholder?: string;
   inputType: 'text' | 'date-time';
 }
-defineProps<AppInputProps>();
 
+const startTime = ref('');
+const endTime = ref('');
+const date = ref('01.01.2024');
+
+watch(startTime, (newValue, oldValue) => {
+  if (!isValidTimeFormat(newValue)) {
+    startTime.value = oldValue;
+  }
+});
+
+function isValidTimeFormat(value: string) {
+  const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+
+  return timeRegex.test(value);
+}
+
+defineProps<AppInputProps>();
 </script>
 
 <template>
@@ -33,17 +51,23 @@ defineProps<AppInputProps>();
     >
       <div class="app-input__date-time">
         <input 
-          :id="id" 
+          :id="id"
+          v-model="startTime"
+          type="time"
           placeholder="hh:mm"
           class="app-input date-input"
         >
         <input
           :id="id" 
+          v-model="endTime"
+          type="time"
           placeholder="hh:mm"
           class="app-input date-input"
         >
         <input
-          :id="id" 
+          :id="id"
+          v-model="date"
+          type="date"
           placeholder="dd:mm:yyyy"
           class="app-input date-input"
         >
@@ -76,5 +100,9 @@ defineProps<AppInputProps>();
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+.app-input:focus {
+  outline: 1px solid rgb(231, 136, 112);
+  color: black
 }
 </style>
