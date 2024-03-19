@@ -2,7 +2,10 @@
   <div class="grid-container noselect">
     <div class="square">
       <div class="rectangle">
-        <div class="star" v-html="selectedGroupNameId === null ? starSVG : starSVG4"></div>
+        <div
+          class="star"
+          v-html="selectedGroupNameId === null ? starSVG : starSVG4"
+        />
 
         <span class="FavoriteGroup">{{ holder }}</span>
       </div>
@@ -10,22 +13,49 @@
         <div class="scrollWrapper">
           <div class="forScroll">
             <ul class="cursor-pointer">
-              <li v-for="group in groupStore.groups" :key="group.id">
-                <div @click="toggleFacultyVisibility(group.id)" class="boxF">
+              <li
+                v-for="group in groupStore.groups"
+                :key="group.id"
+              >
+                <div
+                  class="boxF"
+                  @click="toggleFacultyVisibility(group.id)"
+                >
                   <span class="p fac">{{ group.Faculty }}</span>
-                  <span class="arrow" v-html="activeFaculty === group.id ? arrowSVG : arrowSVG2"> </span>
+                  <span
+                    class="arrow"
+                    v-html="activeFaculty === group.id ? arrowSVG : arrowSVG2"
+                  />
                 </div>
 
                 <ul v-if="activeFaculty === group.id">
-                  <li v-for="direction in group.Direction" :key="direction.id">
-                    <div class="boxF2 boxF" @click="toggleGroupVisibility(direction.id)">
+                  <li
+                    v-for="direction in group.Direction"
+                    :key="direction.id"
+                  >
+                    <div
+                      class="boxF2 boxF"
+                      @click="toggleGroupVisibility(direction.id)"
+                    >
                       <span class="p group">{{ direction.name_group }}</span>
-                      <span class="arrow" v-html="activeGroup === direction.id ? arrowSVG1 : arrowSVG21"> </span>
+                      <span
+                        class="arrow"
+                        v-html="activeGroup === direction.id ? arrowSVG1 : arrowSVG21"
+                      />
                     </div>
                     <ul v-if="activeGroup === direction.id">
-                      <li v-for="groupName in direction.list" :key="groupName.id">
-                        <div class="boxF3 boxF" @click="toggleFavoriteGroup(groupName.id)">
-                          <span class="star" v-html="groupName.id === selectedGroupNameId ? starSVG3 : starSVG2"></span>
+                      <li
+                        v-for="groupName in direction.list"
+                        :key="groupName.id"
+                      >
+                        <div
+                          class="boxF3 boxF"
+                          @click="toggleFavoriteGroup(groupName.id)"
+                        >
+                          <span
+                            class="star"
+                            v-html="groupName.id === selectedGroupNameId ? starSVG3 : starSVG2"
+                          />
                           <span class="p2 Sgroup">{{ groupName.name }}</span>
                         </div>
                       </li>

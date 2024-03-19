@@ -10,7 +10,9 @@ const lessons = computed(() => lessonStore.lessons)
 
 <template>
   <div class="app-lesson-list">
-    <p class="day"> Понедельник </p>
+    <p class="day">
+      Понедельник
+    </p>
     <AppLesson
       v-for="lesson in lessons" 
       :key="lesson.id"

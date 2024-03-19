@@ -5,8 +5,7 @@ import AppAddLesson from '../components/AppAddLesson.vue';
 
 <template>
   <div class="main-container">
-    <div class="main-container-block">
-    </div>
+    <div class="main-container-block" />
     <div class="main-container-block">
       <AppSchedule />
     </div>
