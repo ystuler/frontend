@@ -12,20 +12,21 @@
             <ul class="cursor-pointer">
               <li v-for="group in groupStore.groups" :key="group.id">
                 <div @click="toggleFacultyVisibility(group.id)" class="boxF">
-                  <span class="p">{{ group.Faculty }}</span>
-                  <span v-html="activeFaculty === group.id ? arrowSVG : arrowSVG2"> </span>
+                  <span class="p fac">{{ group.Faculty }}</span>
+                  <span class="arrow" v-html="activeFaculty === group.id ? arrowSVG : arrowSVG2"> </span>
                 </div>
+
                 <ul v-if="activeFaculty === group.id">
                   <li v-for="direction in group.Direction" :key="direction.id">
-                    <div class="boxF" @click="toggleGroupVisibility(direction.id)">
-                      <span class="p">{{ direction.name_group }}</span>
-                      <span v-html="activeGroup === direction.id ? arrowSVG : arrowSVG2"> </span>
+                    <div class="boxF2 boxF" @click="toggleGroupVisibility(direction.id)">
+                      <span class="p group">{{ direction.name_group }}</span>
+                      <span class="arrow" v-html="activeGroup === direction.id ? arrowSVG1 : arrowSVG21"> </span>
                     </div>
                     <ul v-if="activeGroup === direction.id">
                       <li v-for="groupName in direction.list" :key="groupName.id">
-                        <div class="boxF" @click="toggleFavoriteGroup(groupName.id)">
+                        <div class="boxF3 boxF" @click="toggleFavoriteGroup(groupName.id)">
                           <span class="star" v-html="groupName.id === selectedGroupNameId ? starSVG3 : starSVG2"></span>
-                          <span class="p2">{{ groupName.name }}</span>
+                          <span class="p2 Sgroup">{{ groupName.name }}</span>
                         </div>
                       </li>
                     </ul>
@@ -42,7 +43,7 @@
 
 <script setup lang="ts">
 import { starSVG, starSVG2, starSVG3, starSVG4 } from "../../utils/StarSVG.ts";
-import { arrowSVG, arrowSVG2 } from "../../utils/arrowSVG.ts";
+import { arrowSVG, arrowSVG2,arrowSVG1,arrowSVG21 } from "../../utils/arrowSVG.ts";
 import { useGroupStore } from "../../stores/group.store.ts";
 import { ref } from "vue";
 
@@ -88,6 +89,7 @@ const toggleFavoriteGroup = (groupNameId: number) => {
 
 
 <style scoped>
+
 ::-webkit-scrollbar {
   width: 20px;
 
@@ -107,7 +109,11 @@ const toggleFavoriteGroup = (groupNameId: number) => {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(157, 154, 154);
 }
-
+.arrow{
+  position: absolute;
+  top: 13%;
+  right: 0;
+}
 .grid-container {
   display: grid;
   height: 100vh;
@@ -117,7 +123,37 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   padding-left: 0.5vw;
 
 }
+.fac{
+  color: rgb(143, 143, 143);
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+}
+.group{
+  color: rgb(143, 143, 143);
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.Sgroup{
+  color: rgb(143, 143, 143);
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+}
 .boxF {
+  position: relative;
   width: 27.1vw;
   height: 5vh;
   border: 0.13rem solid rgb(100, 99, 99);
@@ -133,6 +169,17 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   align-items: center;
   display: flex;
 
+}
+
+.boxF2{
+  border: 0.13rem solid rgb(153, 148, 148);
+  border-top: none;
+  border-left: none;
+}
+.boxF3{
+  border: 0.13rem solid rgb(212, 207, 207);
+  border-top: none;
+  border-left: none;
 }
 .p{
   padding-left: 1vw;
