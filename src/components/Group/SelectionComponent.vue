@@ -6,7 +6,7 @@
           class="star"
           v-html="selectedGroupNameId === null ? starSVG : starSVG4"
         />
-
+        
         <span class="FavoriteGroup">{{ holder }}</span>
       </div>
       <div class="rectangle2">
