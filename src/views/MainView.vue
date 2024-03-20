@@ -1,21 +1,44 @@
 <script setup lang="ts">
 import AppSchedule from '../components/AppSchedule.vue';
 import AppAddLesson from '../components/AppAddLesson.vue';
+import AddLessonButton from '../components/AddLessonButton.vue';
 </script>
 
 <template>
   <div class="main-container">
-    <div class="main-container-block" />
     <div class="main-container-block">
-      <AppSchedule />
+      <AppSchedule class="main-container-block__schedule"/>
     </div>
     <div class="main-container-block main-container-block__add-lesson">
-      <AppAddLesson />
+      <AppAddLesson class="app-add-lesson-expanded" />
+      <AddLessonButton class="app-add-lesson-mini" />
     </div>
   </div>
 </template>
 
 <style scoped>
+@media screen and (width < 1000px) {
+  .app-add-lesson-expanded {
+    display: none;
+  }
+  .app-add-lesson-mini {
+    display: block;
+  }
+  .main-container-block.main-container-block__add-lesson {
+    width: 5%;
+  }
+}
+@media screen and (width >= 1000px) {
+  .app-add-lesson-mini {
+    display: none;
+  }
+}
+.main-container-block__schedule {
+  width: 100%;
+}
+.app-add-lesson-mini {
+  flex-shrink: none;
+}
 .main-container-block__add-lesson {
   padding: 0 32px;
 }
@@ -25,7 +48,8 @@ import AppAddLesson from '../components/AppAddLesson.vue';
   justify-content: center;
 }
 .main-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
   justify-content: center;
   align-items: center;
 }
