@@ -2,10 +2,12 @@
   <div class="grid-container noselect">
     <div class="square">
       <div class="rectangle">
-        <div
-          class="star"
-          v-html="selectedGroupNameId === null ? starSVG : starSVG4"
-        />
+        <div>
+          <AppStarIcon class="star" v-if="selectedGroupNameId === null" width="45" height="40" color="#8A8A8A"
+                       color-back="#FFFFFF"></AppStarIcon>
+          <AppStarIcon class="star" v-else width="45" height="40" color="#8A8A8A" color-back="#F6B80A"></AppStarIcon>
+
+        </div>
 
         <span class="FavoriteGroup">{{ holder }}</span>
       </div>
@@ -14,48 +16,67 @@
           <div class="forScroll">
             <ul class="cursor-pointer">
               <li
-                v-for="group in groupStore.groups"
-                :key="group.id"
+                  v-for="group in groupStore.groups"
+                  :key="group.id"
               >
                 <div
-                  class="boxF"
-                  @click="toggleFacultyVisibility(group.id)"
+                    class="boxF"
+                    @click="toggleFacultyVisibility(group.id)"
                 >
                   <span class="p fac">{{ group.Faculty }}</span>
-                  <span
-                    class="arrow"
-                    v-html="activeFaculty === group.id ? arrowSVG : arrowSVG2"
-                  />
+                  <AppArrowIcon
+                      v-if="activeFaculty === group.id"
+                      rotate="0"
+                      width="35"
+                      height="35"
+                      opacity="0.8"
+                  ></AppArrowIcon>
+                  <AppArrowIcon
+                      v-else
+                      rotate="180"
+                      width="35"
+                      height="35"
+                      opacity="0.8"
+                  ></AppArrowIcon>
                 </div>
 
                 <ul v-if="activeFaculty === group.id">
                   <li
-                    v-for="direction in group.Direction"
-                    :key="direction.id"
+                      v-for="direction in group.Direction"
+                      :key="direction.id"
                   >
                     <div
-                      class="boxF2 boxF"
-                      @click="toggleGroupVisibility(direction.id)"
+                        class="boxF2 boxF"
+                        @click="toggleGroupVisibility(direction.id)"
                     >
                       <span class="p group">{{ direction.name_group }}</span>
-                      <span
-                        class="arrow"
-                        v-html="activeGroup === direction.id ? arrowSVG1 : arrowSVG21"
-                      />
+                      <AppArrowIcon
+                          v-if="activeGroup === direction.id"
+                          rotate="0"
+                          width="35"
+                          height="35"
+                          opacity="0.5"
+                      ></AppArrowIcon>
+                      <AppArrowIcon
+                          v-else
+                          rotate="180"
+                          width="35"
+                          height="35"
+                          opacity="0.5"
+                      ></AppArrowIcon>
                     </div>
                     <ul v-if="activeGroup === direction.id">
                       <li
-                        v-for="groupName in direction.list"
-                        :key="groupName.id"
+                          v-for="groupName in direction.list"
+                          :key="groupName.id"
                       >
                         <div
-                          class="boxF3 boxF"
-                          @click="toggleFavoriteGroup(groupName.id)"
+                            class="boxF3 boxF"
+                            @click="toggleFavoriteGroup(groupName.id)"
                         >
-                          <span
-                            class="star"
-                            v-html="groupName.id === selectedGroupNameId ? starSVG3 : starSVG2"
-                          />
+                          <AppStarIcon class="star" v-if="groupName.id === selectedGroupNameId" width="40" height="40"
+                                       color="#8A8A8A" color-back="#F6B80A"></AppStarIcon>
+                          <AppStarIcon v-else width="40" height="40" color="#8A8A8A" color-back="#FFFFFF"></AppStarIcon>
                           <span class="p2 Sgroup">{{ groupName.name }}</span>
                         </div>
                       </li>
@@ -72,10 +93,10 @@
 </template>
 
 <script setup lang="ts">
-import { starSVG, starSVG2, starSVG3, starSVG4 } from "../../utils/StarSVG.ts";
-import { arrowSVG, arrowSVG2,arrowSVG1,arrowSVG21 } from "../../utils/arrowSVG.ts";
-import { useGroupStore } from "../../stores/group.store.ts";
-import { ref } from "vue";
+import {useGroupStore} from "../../stores/group.store.ts";
+import {ref} from "vue";
+import AppArrowIcon from "../../utils/AppArrowIcon.vue";
+import AppStarIcon from "../../utils/AppStarIcon.vue";
 
 const groupStore = useGroupStore();
 const activeFaculty = ref<number | null>(null);
@@ -139,21 +160,19 @@ const toggleFavoriteGroup = (groupNameId: number) => {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(157, 154, 154);
 }
-.arrow{
-  position: absolute;
-  top: 13%;
-  right: 0;
-}
+
 .grid-container {
   display: grid;
   height: 100vh;
   place-items: center;
 }
-.p2{
+
+.p2 {
   padding-left: 0.5vw;
 
 }
-.fac{
+
+.fac {
   color: rgb(143, 143, 143);
   font-family: Inter;
   font-size: 24px;
@@ -166,7 +185,8 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   text-overflow: ellipsis;
 
 }
-.group{
+
+.group {
   color: rgb(143, 143, 143);
   font-family: Inter;
   font-size: 20px;
@@ -175,13 +195,15 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   letter-spacing: 0px;
   text-align: left;
 }
-.Sgroup{
+
+.Sgroup {
   color: rgb(143, 143, 143);
   font-family: Inter;
   font-size: 18px;
   font-weight: 400;
   line-height: 29px;
 }
+
 .boxF {
   position: relative;
   width: 27.1vw;
@@ -201,20 +223,23 @@ const toggleFavoriteGroup = (groupNameId: number) => {
 
 }
 
-.boxF2{
+.boxF2 {
   border: 0.13rem solid rgb(153, 148, 148);
   border-top: none;
   border-left: none;
 }
-.boxF3{
+
+.boxF3 {
   border: 0.13rem solid rgb(212, 207, 207);
   border-top: none;
   border-left: none;
 }
-.p{
+
+.p {
   padding-left: 1vw;
 
 }
+
 .forScroll {
   width: 28.9vw;
   height: 53.4vh;
@@ -235,12 +260,6 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   z-index: 2;
 }
 
-.star {
-  padding-left: 10px;
-}
-.star2 {
-  padding-left: 10px;
-}
 text {
   user-select: none;
 }
