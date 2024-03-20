@@ -3,80 +3,104 @@
     <div class="square">
       <div class="rectangle">
         <div>
-          <AppStarIcon class="star" v-if="selectedGroupNameId === null" width="45" height="40" color="#8A8A8A"
-                       color-back="#FFFFFF"></AppStarIcon>
-          <AppStarIcon class="star" v-else width="45" height="40" color="#8A8A8A" color-back="#F6B80A"></AppStarIcon>
-
+          <AppStarIcon
+            v-if="selectedGroupNameId === null"
+            class="star"
+            width="45"
+            height="40"
+            color="#8A8A8A"
+            color-back="#FFFFFF"
+          />
+          <AppStarIcon
+            v-else
+            class="star"
+            width="45"
+            height="40"
+            color="#8A8A8A"
+            color-back="#F6B80A"
+          />
         </div>
 
-        <span class="FavoriteGroup">{{ holder }}</span>
+        <span class="favorite-group">{{ holder }}</span>
       </div>
       <div class="rectangle2">
-        <div class="scrollWrapper">
+        <div class="scroll-wrapper">
           <div class="forScroll">
             <ul class="cursor-pointer">
               <li
-                  v-for="group in groupStore.groups"
-                  :key="group.id"
+                v-for="group in groupStore.groups"
+                :key="group.id"
               >
                 <div
-                    class="boxF"
-                    @click="toggleFacultyVisibility(group.id)"
+                  class="boxF"
+                  @click="togglefacultyVisibility(group.id)"
                 >
-                  <span class="p fac">{{ group.Faculty }}</span>
+                  <span class="p fac">{{ group.faculty }}</span>
                   <AppArrowIcon
-                      v-if="activeFaculty === group.id"
-                      rotate="0"
-                      width="35"
-                      height="35"
-                      opacity="0.8"
-                  ></AppArrowIcon>
+                    v-if="activefaculty === group.id"
+                    rotate="0"
+                    width="35"
+                    height="35"
+                    opacity="0.8"
+                  />
                   <AppArrowIcon
-                      v-else
-                      rotate="180"
-                      width="35"
-                      height="35"
-                      opacity="0.8"
-                  ></AppArrowIcon>
+                    v-else
+                    rotate="180"
+                    width="35"
+                    height="35"
+                    opacity="0.8"
+                  />
                 </div>
 
-                <ul v-if="activeFaculty === group.id">
+                <ul v-if="activefaculty === group.id">
                   <li
-                      v-for="direction in group.Direction"
-                      :key="direction.id"
+                    v-for="direction in group.direction"
+                    :key="direction.id"
                   >
                     <div
-                        class="boxF2 boxF"
-                        @click="toggleGroupVisibility(direction.id)"
+                      class="boxF2 boxF"
+                      @click="toggleGroupVisibility(direction.id)"
                     >
-                      <span class="p group">{{ direction.name_group }}</span>
+                      <span class="p group">{{ direction.nameGroup }}</span>
                       <AppArrowIcon
-                          v-if="activeGroup === direction.id"
-                          rotate="0"
-                          width="35"
-                          height="35"
-                          opacity="0.5"
-                      ></AppArrowIcon>
+                        v-if="activeGroup === direction.id"
+                        rotate="0"
+                        width="35"
+                        height="35"
+                        opacity="0.5"
+                      />
                       <AppArrowIcon
-                          v-else
-                          rotate="180"
-                          width="35"
-                          height="35"
-                          opacity="0.5"
-                      ></AppArrowIcon>
+                        v-else
+                        rotate="180"
+                        width="35"
+                        height="35"
+                        opacity="0.5"
+                      />
                     </div>
                     <ul v-if="activeGroup === direction.id">
                       <li
-                          v-for="groupName in direction.list"
-                          :key="groupName.id"
+                        v-for="groupName in direction.list"
+                        :key="groupName.id"
                       >
                         <div
-                            class="boxF3 boxF"
-                            @click="toggleFavoriteGroup(groupName.id)"
+                          class="boxF3 boxF"
+                          @click="toggleFavoriteGroup(groupName.id)"
                         >
-                          <AppStarIcon class="star" v-if="groupName.id === selectedGroupNameId" width="40" height="40"
-                                       color="#8A8A8A" color-back="#F6B80A"></AppStarIcon>
-                          <AppStarIcon v-else width="40" height="40" color="#8A8A8A" color-back="#FFFFFF"></AppStarIcon>
+                          <AppStarIcon
+                            v-if="groupName.id === selectedGroupNameId"
+                            class="star"
+                            width="40"
+                            height="40"
+                            color="#8A8A8A"
+                            color-back="#F6B80A"
+                          />
+                          <AppStarIcon
+                            v-else
+                            width="40"
+                            height="40"
+                            color="#8A8A8A"
+                            color-back="#FFFFFF"
+                          />
                           <span class="p2 Sgroup">{{ groupName.name }}</span>
                         </div>
                       </li>
@@ -99,7 +123,7 @@ import AppArrowIcon from "../../utils/AppArrowIcon.vue";
 import AppStarIcon from "../../utils/AppStarIcon.vue";
 
 const groupStore = useGroupStore();
-const activeFaculty = ref<number | null>(null);
+const activefaculty = ref<number | null>(null);
 const activeGroup = ref<number | null>(null);
 const selectedGroupNameId = ref<number | null>(null);
 
@@ -111,11 +135,11 @@ const toggleGroupVisibility = (directionId: number) => {
   }
 };
 
-const toggleFacultyVisibility = (groupId: number) => {
-  if (activeFaculty.value === groupId) {
-    activeFaculty.value = null;
+const togglefacultyVisibility = (groupId: number) => {
+  if (activefaculty.value === groupId) {
+    activefaculty.value = null;
   } else {
-    activeFaculty.value = groupId;
+    activefaculty.value = groupId;
   }
 };
 
@@ -124,12 +148,12 @@ const holder = ref("Избранная группа будет тут...");
 //todo переписать toggleFavoriteGroup совершенно не чиатемая функция
 const toggleFavoriteGroup = (groupNameId: number) => {
   const foundGroup = groupStore.groups.find(group =>
-      group.Direction.some(direction =>
+      group.direction.some(direction =>
           direction.list.some(groupName => groupName.id === groupNameId)
       )
   );
 
-  const allGroupNamesInFoundGroup = foundGroup?.Direction.flatMap(direction => direction.list);
+  const allGroupNamesInFoundGroup = foundGroup?.direction.flatMap(direction => direction.list);
 
   const foundGroupName = allGroupNamesInFoundGroup?.find(groupName => groupName.id === groupNameId)?.name || "";
 
@@ -174,7 +198,6 @@ const toggleFavoriteGroup = (groupNameId: number) => {
 
 .fac {
   color: rgb(143, 143, 143);
-  font-family: Inter;
   font-size: 24px;
   font-weight: 600;
   line-height: 29px;
@@ -188,7 +211,6 @@ const toggleFavoriteGroup = (groupNameId: number) => {
 
 .group {
   color: rgb(143, 143, 143);
-  font-family: Inter;
   font-size: 20px;
   font-weight: 500;
   line-height: 29px;
@@ -282,7 +304,7 @@ text {
 }
 
 
-.FavoriteGroup {
+.favorite-group {
   font-size: 24px;
   font-family: Inter, serif;
   color: rgb(196, 194, 194);

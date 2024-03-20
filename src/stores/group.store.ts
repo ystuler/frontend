@@ -3,13 +3,13 @@ import groups from './mock/groups.json'
 
 export interface Group {
     id: number;
-    Faculty: string;
-    Direction: Direction[];
+    faculty: string;
+    direction: Direction[];
 }
 
 interface Direction {
     id: number;
-    name_group: string;
+    nameGroup: string;
     list: GroupName[];
 }
 
@@ -25,8 +25,5 @@ export interface GroupState {
 export const useGroupStore = defineStore('group', {
     state: (): GroupState => ({
         groups: groups as Group[]
-    }),
-    actions: {
-
-    }
-})
+    })
+});

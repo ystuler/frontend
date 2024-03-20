@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "Faculty": "Институт потных мужиков",
-    "Direction": [
+    "faculty": "Институт потных мужиков",
+    "direction": [
       {
-        "name_group": "ЦИС",
+        "nameGroup": "ЦИС",
         "id": 1,
         "list": [
           {
@@ -54,7 +54,7 @@
         ]
       },
       {
-        "name_group": "ПИ",
+        "nameGroup": "ПИ",
         "id": 2,
         "list": [
           {
@@ -71,10 +71,10 @@
   },
   {
     "id": 2,
-    "Faculty": "Факультет программной инженерии",
-    "Direction": [
+    "faculty": "Факультет программной инженерии",
+    "direction": [
       {
-        "name_group": "ПОИТ",
+        "nameGroup": "ПОИТ",
         "id": 3,
         "list": [
           {
@@ -88,7 +88,7 @@
         ]
       },
       {
-        "name_group": "ПОИБМ",
+        "nameGroup": "ПОИБМ",
         "id": 4,
         "list": [
           {
