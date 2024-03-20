@@ -119,8 +119,8 @@
 <script setup lang="ts">
 import {useGroupStore} from "../../stores/group.store.ts";
 import {ref} from "vue";
-import AppArrowIcon from "../../utils/AppArrowIcon.vue";
-import AppStarIcon from "../../utils/AppStarIcon.vue";
+import AppArrowIcon from "../icons/AppArrowIcon.vue";
+import AppStarIcon from "../icons/AppStarIcon.vue";
 
 const groupStore = useGroupStore();
 const activefaculty = ref<number | null>(null);
