@@ -10,7 +10,7 @@ export interface Group {
 interface Direction {
     id: number;
     nameGroup: string;
-    list: GroupName[];
+    list: GroupName[]
 }
 
 interface GroupName {

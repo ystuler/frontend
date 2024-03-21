@@ -216,7 +216,7 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   font-size: 20px;
   font-weight: 500;
   line-height: 29px;
-  letter-spacing: 0px;
+  letter-spacing: 0px; position: absolute;
   text-align: left;
 }
 
