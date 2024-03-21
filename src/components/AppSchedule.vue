@@ -1,6 +1,16 @@
 <script setup lang="ts">
-//Все окно с рассписанием
+// Все окно с расписанием
 import AppLessonList from './AppLessonList.vue';
+const lessonLists = [
+  // я хз что с этим сделать ыыы
+  {},
+  {},
+  {},
+  {},
+  {},
+  {}
+];
+
 </script>
 
 <template>
@@ -8,7 +18,9 @@ import AppLessonList from './AppLessonList.vue';
     <p class="app-schedule-title">
       Расписание занятий GroupName
     </p>
-    <AppLessonList />
+    <div v-for="(lessonList, index) in lessonLists" :key="index">
+      <AppLessonList :lessons="lessonList" />
+    </div>
   </div>
 </template>
 

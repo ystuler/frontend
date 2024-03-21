@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 export interface AppLessonProps {
   timeStart: number;
   timeEnd: number;
@@ -10,12 +9,11 @@ export interface AppLessonProps {
 }
 
 defineProps<AppLessonProps>();
-//Включает в себя всю информацию о предмете
 </script>
 
 <template>
   <div class="app-lesson-info">
-    <p class="time"> 
+    <p class="time">
       {{ timeStart }} - {{ timeEnd }}
     </p>
     <p class="name">
@@ -32,34 +30,37 @@ defineProps<AppLessonProps>();
     </p>
   </div>
 </template>
+
 <style scoped>
 .app-lesson-info {
   font-size: 20px;
-  align-items: center;
-  display:flex;
+  display: flex;
   width: 100%;
-  text-align: justify;
+  justify-content: space-between;
+  text-align: center;
 }
+
 .time {
-  margin-left: 12px;
-  max-width: 100%;
+  width: 140px;
 }
+
 .name {
-  margin-left: 12px;
-  max-width: 300px;
+  max-width: 400px;
   overflow: hidden;
   white-space: nowrap;
   flex-grow: 1;
 }
+
 .teacher {
-  margin-left: 36px;
-  margin-right: 36px;
+  width: 240px;
 }
+
 .subgroup {
-  margin-right: 36px;
   font-size: 20px;
+  width: 40px;
 }
+
 .audience {
-  margin-right: 12px;
+  width: 100px;
 }
 </style>
