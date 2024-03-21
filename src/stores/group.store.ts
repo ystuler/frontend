@@ -10,7 +10,7 @@ export interface Group {
 interface Direction {
     id: number;
     nameGroup: string;
-    list: GroupName[];
+    list: GroupName[]
 }
 
 interface GroupName {
@@ -25,5 +25,19 @@ export interface GroupState {
 export const useGroupStore = defineStore('group', {
     state: (): GroupState => ({
         groups: groups as Group[]
-    })
+    }),
+    getters: {
+        filterGroups: (state) => {
+            return (query: string) => {
+                const lowerQuery = query.toLowerCase();
+                return state.groups.flatMap(faculty =>
+                    faculty.direction.flatMap(direction =>
+                        direction.list.filter(group =>
+                            group.name.toLowerCase().includes(lowerQuery)
+                        )
+                    )
+                );
+            };
+        }
+    }
 });

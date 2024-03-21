@@ -20,8 +20,10 @@
             color-back="#F6B80A"
           />
         </div>
-
-        <span class="favorite-group">{{ holder }}</span>
+        <span v-if="holder=='Избранная группа будет тут...'">
+            <SearchMenuComponent></SearchMenuComponent>
+        </span>
+        <span v-else class="favorite-group">{{ holder }}</span>
       </div>
       <div class="rectangle2">
         <div class="scroll-wrapper">
@@ -37,7 +39,7 @@
                 >
                   <span class="p fac">{{ group.faculty }}</span>
                   <AppArrowIcon
-                    v-if="activefaculty === group.id"
+                    v-if="activeFaculty === group.id"
                     rotate="0"
                     width="35"
                     height="35"
@@ -52,7 +54,7 @@
                   />
                 </div>
 
-                <ul v-if="activefaculty === group.id">
+                <ul v-if="activeFaculty === group.id">
                   <li
                     v-for="direction in group.direction"
                     :key="direction.id"
@@ -121,9 +123,9 @@ import {useGroupStore} from "../../stores/group.store.ts";
 import {ref} from "vue";
 import AppArrowIcon from "../icons/AppArrowIcon.vue";
 import AppStarIcon from "../icons/AppStarIcon.vue";
-
+import SearchMenuComponent from "./SearchMenuComponent.vue";
 const groupStore = useGroupStore();
-const activefaculty = ref<number | null>(null);
+const activeFaculty = ref<number | null>(null);
 const activeGroup = ref<number | null>(null);
 const selectedGroupNameId = ref<number | null>(null);
 
@@ -136,10 +138,10 @@ const toggleGroupVisibility = (directionId: number) => {
 };
 
 const togglefacultyVisibility = (groupId: number) => {
-  if (activefaculty.value === groupId) {
-    activefaculty.value = null;
+  if (activeFaculty.value === groupId) {
+    activeFaculty.value = null;
   } else {
-    activefaculty.value = groupId;
+    activeFaculty.value = groupId;
   }
 };
 
@@ -214,7 +216,7 @@ const toggleFavoriteGroup = (groupNameId: number) => {
   font-size: 20px;
   font-weight: 500;
   line-height: 29px;
-  letter-spacing: 0px;
+  letter-spacing: 0px; position: absolute;
   text-align: left;
 }
 

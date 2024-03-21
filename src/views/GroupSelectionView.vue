@@ -1,15 +1,15 @@
 <script lang="ts">
-import SelectionComponent from "../components/Group/SelectionComponent.vue";
 import { defineComponent } from 'vue'
+import GroupMenuComponent from "../components/Group/GroupMenuComponent.vue";
 export default defineComponent({
   components: {
-    SelectionComponent
+    GroupMenuComponent
   }
 })
 </script>
 
 <template>
-  <div><SelectionComponent /></div>
+  <div><GroupMenuComponent /></div>
 </template>
 
 <style scoped></style>
