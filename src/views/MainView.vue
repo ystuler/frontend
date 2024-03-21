@@ -2,16 +2,41 @@
 import AppSchedule from '../components/AppSchedule.vue';
 import AppAddLesson from '../components/AppAddLesson.vue';
 import AddLessonButton from '../components/AddLessonButton.vue';
+import AppModal from '../components/AppModal.vue';
+import { ref } from 'vue';
+
+const isModalOpen = ref(false);
+
+const openModal = () => {
+  console.log('asdfkjasldf')
+  isModalOpen.value = true;
+}
+
+const editSchedule = () => {
+  closeModal();
+} 
+
+const closeModal = () => {
+  isModalOpen.value = false;
+}
 </script>
 
 <template>
   <div class="main-container">
+    <AppModal v-if="isModalOpen">
+      <AppAddLesson />
+    </AppModal>
     <div class="main-container-block">
-      <AppSchedule class="main-container-block__schedule"/>
+      <AppSchedule class="main-container-block__schedule" />
     </div>
     <div class="main-container-block main-container-block__add-lesson">
-      <AppAddLesson class="app-add-lesson-expanded" />
-      <AddLessonButton class="app-add-lesson-mini" />
+      <AppAddLesson
+        class="app-add-lesson-expanded"
+      />
+      <AddLessonButton 
+        class="app-add-lesson-mini"
+        @click="openModal"
+      />
     </div>
   </div>
 </template>
@@ -38,6 +63,9 @@ import AddLessonButton from '../components/AddLessonButton.vue';
 }
 .app-add-lesson-mini {
   flex-shrink: none;
+  position: fixed;
+  right: 52px;
+  top: 52px;
 }
 .main-container-block__add-lesson {
   padding: 0 32px;

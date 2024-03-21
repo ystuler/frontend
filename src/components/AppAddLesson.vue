@@ -55,7 +55,7 @@ import AppInput from './AppInput.vue';
 .app-add-lesson-container__button {
   width: 100%;
   background-color: rgb(231, 136, 112);
-  height: 60px;
+  height: 40px;
   border-radius: 35px;
   margin-top: 20px;
   color:#EFEFEF;
@@ -64,7 +64,7 @@ import AppInput from './AppInput.vue';
 }
 .date-time-container {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 20px;
 }
 .app-add-lesson-title {
