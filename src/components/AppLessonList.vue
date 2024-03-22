@@ -6,13 +6,14 @@ import { computed } from 'vue';
 
 const lessonStore = useLessonStore();
 const lessons = computed(() => lessonStore.lessons) 
+
 </script>
 
 <template>
   <div class="app-lesson-list">
-    <p class="day">
-      Понедельник
-    </p>
+    <div class="day">
+      <p> Понедельник </p> <p>01.01</p>
+    </div>
     <AppLesson
       v-for="lesson in lessons" 
       :key="lesson.id"
@@ -29,20 +30,22 @@ const lessons = computed(() => lessonStore.lessons)
 <style scoped>
 
 .app-lesson-list {
-  width: 100%;
+  max-width: 1200px;
   min-height: 120px;
   background-color: rgb(239, 239, 239);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  padding: 24px 0;
+  gap: 24px;
+  padding: 16px 0;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.2);;
 }
 .day {
+  width: 100%;
   font-size: 24px;
   font-weight: 600;
-  max-width: 100%;
-  text-align: center;
+  margin: 0 24px;
+  gap:12px;
+  display: flex;
 }
 </style>
