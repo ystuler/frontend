@@ -1,69 +1,73 @@
 [
   {
     "id": 1,
-    "faculty": "Потные мужики",
-    "direction": [
+    "facultyName": "Факультет информационных технологий",
+    "directions": [
       {
-        "nameGroup": "ЦИС",
         "id": 1,
-        "list": [
+        "cursNumber": "1",
+        "listGroups": [
           {
-            "name": "ЦИС-10",
-            "id": 1
+            "id": 1,
+            "groupName": "ПИ",
+            "listUpGroups": [
+              {
+                "id": 1,
+                "groupUpName": "ПИ-11"
+              },
+              {
+                "id": 2,
+                "groupUpName": "ПИ-12"
+              }
+            ]
           },
           {
-            "name": "ЦИС-11",
-            "id": 2
-          },
-          {
-            "name": "ЦИС-12",
-            "id": 3
-          },
-          {
-            "name": "ЦИС-13",
-            "id": 4
-          },
-          {
-            "name": "ЦИС-14",
-            "id": 5
-          },
-          {
-            "name": "ЦИС-15",
-            "id": 6
-          },
-          {
-            "name": "ЦИС-16",
-            "id": 7
-          },
-          {
-            "name": "ЦИС-17",
-            "id": 8
-          },
-          {
-            "name": "ЦИС-18",
-            "id": 9
-          },
-          {
-            "name": "ЦИС-19",
-            "id": 10
-          },
-          {
-            "name": "ЦИС-20",
-            "id": 11
+            "id": 2,
+            "groupName": "ИС",
+            "listUpGroups": [
+              {
+                "id": 3,
+                "groupUpName": "ИС-11"
+              },
+              {
+                "id": 4,
+                "groupUpName": "ИС-12"
+              }
+            ]
           }
         ]
       },
       {
-        "nameGroup": "ПИ",
         "id": 2,
-        "list": [
+        "cursNumber": "2",
+        "listGroups": [
           {
-            "name": "ПИ-10",
-            "id": 12
+            "id": 3,
+            "groupName": "ПИ",
+            "listUpGroups": [
+              {
+                "id": 5,
+                "groupUpName": "ПИ-21"
+              },
+              {
+                "id": 6,
+                "groupUpName": "ПИ-22"
+              }
+            ]
           },
           {
-            "name": "ПИ-11",
-            "id": 13
+            "id": 4,
+            "groupName": "ИС",
+            "listUpGroups": [
+              {
+                "id": 7,
+                "groupUpName": "ИС-21"
+              },
+              {
+                "id": 8,
+                "groupUpName": "ИС-22"
+              }
+            ]
           }
         ]
       }
@@ -71,33 +75,45 @@
   },
   {
     "id": 2,
-    "faculty": "Программная инженерия",
-    "direction": [
+    "facultyName": "Факультет электроники и нанотехнологий",
+    "directions": [
       {
-        "nameGroup": "ПОИТ",
         "id": 3,
-        "list": [
+        "cursNumber": "1",
+        "listGroups": [
           {
-            "name": "ПОИТ-10",
-            "id": 14
-          },
-          {
-            "name": "ПОИТ-11",
-            "id": 15
+            "id": 5,
+            "groupName": "ЭН",
+            "listUpGroups": [
+              {
+                "id": 9,
+                "groupUpName": "ЭН-11"
+              },
+              {
+                "id": 10,
+                "groupUpName": "ЭН-12"
+              }
+            ]
           }
         ]
       },
       {
-        "nameGroup": "ПОИБМ",
         "id": 4,
-        "list": [
+        "cursNumber": "2",
+        "listGroups": [
           {
-            "name": "ПОИБМ-10",
-            "id": 16
-          },
-          {
-            "name": "ПОИБМ-11",
-            "id": 17
+            "id": 6,
+            "groupName": "ЭН",
+            "listUpGroups": [
+              {
+                "id": 11,
+                "groupUpName": "ЭН-21"
+              },
+              {
+                "id": 12,
+                "groupUpName": "ЭН-22"
+              }
+            ]
           }
         ]
       }
@@ -105,33 +121,73 @@
   },
   {
     "id": 3,
-    "faculty": "Экономика и бизнес",
-    "direction": [
+    "facultyName": "Факультет математики и статистики",
+    "directions": [
       {
-        "nameGroup": "Финансы и кредит",
         "id": 5,
-        "list": [
+        "cursNumber": "1",
+        "listGroups": [
           {
-            "name": "ФиК-10",
-            "id": 18
+            "id": 13,
+            "groupName": "КМ",
+            "listUpGroups": [
+              {
+                "id": 13,
+                "groupUpName": "КМ-11"
+              },
+              {
+                "id": 14,
+                "groupUpName": "КМ-12"
+              }
+            ]
           },
           {
-            "name": "ФиК-11",
-            "id": 19
+            "id": 14,
+            "groupName": "МС",
+            "listUpGroups": [
+              {
+                "id": 15,
+                "groupUpName": "МС-11"
+              },
+              {
+                "id": 16,
+                "groupUpName": "МС-12"
+              }
+            ]
           }
         ]
       },
       {
-        "nameGroup": "Менеджмент",
         "id": 6,
-        "list": [
+        "cursNumber": "2",
+        "listGroups": [
           {
-            "name": "Менеджмент-10",
-            "id": 20
+            "id": 15,
+            "groupName": "КМ",
+            "listUpGroups": [
+              {
+                "id": 17,
+                "groupUpName": "КМ-21"
+              },
+              {
+                "id": 18,
+                "groupUpName": "КМ-22"
+              }
+            ]
           },
           {
-            "name": "Менеджмент-11",
-            "id": 21
+            "id": 16,
+            "groupName": "МС",
+            "listUpGroups": [
+              {
+                "id": 19,
+                "groupUpName": "МС-21"
+              },
+              {
+                "id": 20,
+                "groupUpName": "МС-22"
+              }
+            ]
           }
         ]
       }
@@ -139,104 +195,224 @@
   },
   {
     "id": 4,
-    "faculty": "Философия",
-    "direction": [
+    "facultyName": "Факультет гуманитарных наук",
+    "directions": [
       {
-        "nameGroup": "Философия",
         "id": 7,
-        "list": [
+        "cursNumber": "1",
+        "listGroups": [
           {
-            "name": "Фил-10",
-            "id": 22
+            "id": 17,
+            "groupName": "И",
+            "listUpGroups": [
+              {
+                "id": 21,
+                "groupUpName": "И-11"
+              },
+              {
+                "id": 22,
+                "groupUpName": "И-12"
+              }
+            ]
           },
           {
-            "name": "Фил-11",
-            "id": 23
+            "id": 18,
+            "groupName": "Ф",
+            "listUpGroups": [
+              {
+                "id": 23,
+                "groupUpName": "Ф-11"
+              },
+              {
+                "id": 24,
+                "groupUpName": "Ф-12"
+              }
+            ]
           }
         ]
       },
       {
-        "nameGroup": "Логика",
         "id": 8,
-        "list": [
+        "cursNumber": "2",
+        "listGroups": [
           {
-            "name": "Лог-10",
-            "id": 24
+            "id": 19,
+            "groupName": "И",
+            "listUpGroups": [
+              {
+                "id": 25,
+                "groupUpName": "И-21"
+              },
+              {
+                "id": 26,
+                "groupUpName": "И-22"
+              }
+            ]
           },
           {
-            "name": "Лог-11",
-            "id": 25
+            "id": 20,
+            "groupName": "Ф",
+            "listUpGroups": [
+              {
+                "id": 27,
+                "groupUpName": "Ф-21"
+              },
+              {
+                "id": 28,
+                "groupUpName": "Ф-22"
+              }
+            ]
           }
         ]
       }
     ]
   },
-    {
-      "id": 5,
-      "faculty": "Медицина",
-      "direction": [
-        {
-          "nameGroup": "Общая медицина",
-          "id": 9,
-          "list": [
-            {
-              "name": "ОМ-10",
-              "id": 26
-            },
-            {
-              "name": "ОМ-11",
-              "id": 27
-            }
-          ]
-        },
-        {
-          "nameGroup": "Педиатрия",
-          "id": 10,
-          "list": [
-            {
-              "name": "Пед-10",
-              "id": 28
-            },
-            {
-              "name": "Пед-11",
-              "id": 29
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "faculty": "История и культура",
-      "direction": [
-        {
-          "nameGroup": "История",
-          "id": 11,
-          "list": [
-            {
-              "name": "Ист-10",
-              "id": 30
-            },
-            {
-              "name": "Ист-11",
-              "id": 31
-            }
-          ]
-        },
-        {
-          "nameGroup": "Культурология",
-          "id": 12,
-          "list": [
-            {
-              "name": "Культ-10",
-              "id": 32
-            },
-            {
-              "name": "Культ-11",
-              "id": 33
-            }
-          ]
-        }
-      ]
-    }
+  {
+    "id": 5,
+    "facultyName": "Факультет биологии и экологии",
+    "directions": [
+      {
+        "id": 9,
+        "cursNumber": "1",
+        "listGroups": [
+          {
+            "id": 21,
+            "groupName": "МБ",
+            "listUpGroups": [
+              {
+                "id": 29,
+                "groupUpName": "МБ-11"
+              },
+              {
+                "id": 30,
+                "groupUpName": "МБ-12"
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "groupName": "Э",
+            "listUpGroups": [
+              {
+                "id": 31,
+                "groupUpName": "Э-11"
+              },
+              {
+                "id": 32,
+                "groupUpName": "Э-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "cursNumber": "2",
+        "listGroups": [
+          {
+            "id": 23,
+            "groupName": "МБ",
+            "listUpGroups": [
+              {
+                "id": 33,
+                "groupUpName": "МБ-21"
+              },
+              {
+                "id": 34,
+                "groupUpName": "МБ-22"
+              }
+            ]
+          },
+          {
+            "id": 24,
+            "groupName": "Э",
+            "listUpGroups": [
+              {
+                "id": 35,
+                "groupUpName": "Э-21"
+              },
+              {
+                "id": 36,
+                "groupUpName": "Э-22"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "facultyName": "Факультет экономики и бизнеса",
+    "directions": [
+      {
+        "id": 11,
+        "cursNumber": "1",
+        "listGroups": [
+          {
+            "id": 25,
+            "groupName": "ЭК",
+            "listUpGroups": [
+              {
+                "id": 37,
+                "groupUpName": "ЭК-11"
+              },
+              {
+                "id": 38,
+                "groupUpName": "ЭК-12"
+              }
+            ]
+          },
+          {
+            "id": 26,
+            "groupName": "БИЗ",
+            "listUpGroups": [
+              {
+                "id": 39,
+                "groupUpName": "БИЗ-11"
+              },
+              {
+                "id": 40,
+                "groupUpName": "БИЗ-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "cursNumber": "2",
+        "listGroups": [
+          {
+            "id": 27,
+            "groupName": "ЭК",
+            "listUpGroups": [
+              {
+                "id": 41,
+                "groupUpName": "ЭК-21"
+              },
+              {
+                "id": 42,
+                "groupUpName": "ЭК-22"
+              }
+            ]
+          },
+          {
+            "id": 28,
+            "groupName": "БИЗ",
+            "listUpGroups": [
+              {
+                "id": 43,
+                "groupUpName": "БИЗ-21"
+              },
+              {
+                "id": 44,
+                "groupUpName": "БИЗ-22"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ]

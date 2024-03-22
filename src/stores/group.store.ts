@@ -1,43 +1,51 @@
-import { defineStore } from "pinia";
-import groups from './mock/groups.json'
+import { defineStore } from 'pinia';
+import groups from './mock/groups.json';
 
-export interface Group {
+interface GroupUp {
     id: number;
-    faculty: string;
-    direction: Direction[];
+    groupUpName: string;
+}
+
+interface ListGroup {
+    id: number;
+    groupName: string;
+    listUpGroups: GroupUp[];
 }
 
 interface Direction {
     id: number;
-    nameGroup: string;
-    list: GroupName[]
+    cursNumber: string;
+    listGroups: ListGroup[];
 }
 
-interface GroupName {
+interface Faculty {
     id: number;
-    name: string;
+    facultyName: string;
+    directions: Direction[];
 }
 
-export interface GroupState {
-    groups: Group[];
+interface GroupState {
+    faculties: Faculty[];
 }
 
 export const useGroupStore = defineStore('group', {
     state: (): GroupState => ({
-        groups: groups as Group[]
+        faculties: groups as Faculty[]
     }),
-    getters: {
-        filterGroups: (state) => {
-            return (query: string) => {
-                const lowerQuery = query.toLowerCase();
-                return state.groups.flatMap(faculty =>
-                    faculty.direction.flatMap(direction =>
-                        direction.list.filter(group =>
-                            group.name.toLowerCase().includes(lowerQuery)
-                        )
-                    )
-                );
-            };
-        }
-    }
+    // getters: {
+    //     filterGroups: (state) => {
+    //         return (query: string) => {
+    //             const lowerQuery = query.toLowerCase();
+    //             return state.faculties.flatMap(faculty =>
+    //                 faculty.directions.flatMap(direction =>
+    //                     direction.listGroups.flatMap(listGroup =>
+    //                         listGroup.listUpGroups.filter(groupUp =>
+    //                             groupUp.groupUpName.toLowerCase().includes(lowerQuery)
+    //                         )
+    //                     )
+    //                 )
+    //             );
+    //         };
+    //     }
+    // }
 });

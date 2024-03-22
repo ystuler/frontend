@@ -7,6 +7,7 @@ const groupStore = useGroupStore();
 const fastChoiceGroup = ref("Быстрый выбор группы:");
 const choiceFac = ref("Выберите институт:");
 
+const classes = ref ("Институт")
 
 </script>
 
@@ -16,12 +17,20 @@ const choiceFac = ref("Выберите институт:");
       <div class="fast-group">{{ fastChoiceGroup }} ЦИС___17</div>
       <div class="choise-fac-text">{{ choiceFac }}</div>
       <ul class="grid-container">
-        <li v-for="group in groupStore.groups"
+        <li v-for="group in groupStore.faculties"
             :key="group.id">
-          <div class="item-faculty">{{ group.faculty }}</div>
+          <div class="item-faculty">{{ group.facultyName }}</div>
 
         </li>
       </ul>
+      <div>
+        <span>{{classes}}</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+
+      </div>
     </div>
   </div>
 </template>
