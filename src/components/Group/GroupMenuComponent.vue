@@ -1,39 +1,96 @@
 <script setup lang="ts">
-import {ref} from "vue";
-import {useGroupStore} from "../../stores/group.store.ts";
+import { ref } from "vue";
+import { useGroupStore } from "../../stores/group.store.ts";
 
 const groupStore = useGroupStore();
 
-const fastChoiceGroup = ref("Быстрый выбор группы:");
-const choiceFac = ref("Выберите институт:");
+const fastChoiceGroup = ref<string>("Быстрый выбор группы:");
+const choiceFac = ref<string>("Выберите институт:");
+const choiceGroup = ref<string>("Выберите группу:");
+const classes = ref<string>("Курс");
 
-const classes = ref ("Институт")
+const selectedFacultyName = ref<string>("");
+const selectedClass = ref<string>("");
 
+function selectFaculty(facultyName: string): void {
+  selectedFacultyName.value = facultyName;
+  selectedClass.value = "";
+}
+
+function selectClass(className: string): void {
+  selectedClass.value = className;
+}
+const letterInput = ref('');
+const numberInput = ref('');
+const groupName = ref('');
+
+const findGroupName = () => {
+  groupName.value = '';
+  const formattedLetterInput = letterInput.value.replace(/-/g, '');
+
+  const searchString = (`${formattedLetterInput}-${numberInput.value}`).toLowerCase();
+
+  for (const faculty of groupStore.faculties) {
+    for (const direction of faculty.directions) {
+      for (const listGroup of direction.listGroups) {
+        for (const listUpGroup of listGroup.listUpGroups) {
+          if (listUpGroup.groupUpName.toLowerCase() === searchString) {
+            console.log(listUpGroup.groupUpName)
+            groupName.value = listUpGroup.groupUpName;
+            return;
+          }
+        }
+      }
+    }
+  }
+
+  if (!groupName.value) {
+    console.log('Группа не найдена')
+    groupName.value = 'Группа не найдена';
+  }
+};
 </script>
+
+
 
 <template>
   <div class="background">
     <div class="menu">
-      <div class="fast-group">{{ fastChoiceGroup }} ЦИС___17</div>
-      <div class="choise-fac-text">{{ choiceFac }}</div>
+      <div class="fast-group">
+        <input v-model="letterInput" type="text" placeholder="Введите буквы"/>
+        <input v-model="numberInput" type="number" placeholder="Введите число"/>
+        <button @click="findGroupName">Найти группу</button>
+      </div>
+      <div class="choise-fac-text" @click="selectFaculty('')">{{ choiceFac }}</div>
       <ul class="grid-container">
-        <li v-for="group in groupStore.faculties"
-            :key="group.id">
-          <div class="item-faculty">{{ group.facultyName }}</div>
-
+        <li v-for="faculty in groupStore.faculties" :key="faculty.id" @click="selectFaculty(faculty.facultyName)">
+          <div class="item-faculty">{{ faculty.facultyName }}</div>
         </li>
       </ul>
       <div class="fast-classes">
-        <span>{{classes}}</span>
-        <div class="circle-classes">1</div>
-        <div class="circle-classes">2</div>
-        <div class="circle-classes">3</div>
-        <div class="circle-classes">4</div>
-
+        <span class="text-classes" @click="selectClass('')">{{ classes }}</span>
+        <div v-for="n in 4" :key="n" class="circle-classes" @click="selectClass(n.toString())">{{ n }}</div>
       </div>
+      <div class="choise-group-text" >{{ choiceGroup }}</div>
+      <ul v-if="selectedFacultyName">
+        <li v-for="faculty in groupStore.faculties.filter(faculty => faculty.facultyName === selectedFacultyName)" :key="faculty.id">
+          <ul v-for="direction in faculty.directions.filter(direction => !selectedClass || direction.cursNumber === selectedClass)" :key="direction.id">
+            <li v-for="listGroup in direction.listGroups" :key="listGroup.id">
+              <ul>
+                <li v-for="listUpGroup in listGroup.listUpGroups" :key="listUpGroup.id">
+                  <div>{{ listUpGroup.groupUpName }}</div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+
     </div>
   </div>
 </template>
+
 
 <style scoped>
 
@@ -44,6 +101,11 @@ const classes = ref ("Институт")
   grid-template-columns: repeat(3, 15vw);
   grid-gap: 1vw;
   justify-content: center;
+
+}
+
+.choise-group-text {
+  padding-top: 3vh;
 
 }
 
@@ -76,6 +138,7 @@ const classes = ref ("Институт")
 
 
 }
+
 .fast-classes {
   display: flex;
   align-items: center;
@@ -87,7 +150,7 @@ const classes = ref ("Институт")
   height: 30px;
   background-color: #3498db;
   border-radius: 50%;
-  margin: 0.5vw;
+  margin: 0.2vw;
   display: flex;
   justify-content: center;
   align-items: center;
