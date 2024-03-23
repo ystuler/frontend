@@ -13,13 +13,12 @@ const selectedClass = ref<string>("");
 
 const extendedFlatGroupList = computed(() => {
   const filledItems = flatGroupList.value.slice();
-  const totalItems = 16;
+  const totalItems = 0;
   const emptyItemsCount = totalItems - filledItems.length;
 
   for (let i = 0; i < emptyItemsCount; i++) {
     filledItems.push({id: `empty-${i}`, groupUpName: ''});
   }
-
   return filledItems;
 });
 
@@ -30,7 +29,7 @@ function selectFaculty(facultyName: string): void {
 
 const flatGroupList = computed(() => {
   //todo сделать нормальный тип данных для groups
-  const groups = [];
+  const groups: any[] = [];
   const filteredFaculties = groupStore.faculties.filter(faculty => faculty.facultyName === selectedFacultyName.value);
 
   filteredFaculties.forEach(faculty => {
@@ -90,29 +89,71 @@ const findGroupName = () => {
     <div class="menu">
       <div class="fast-group">
         <span class="search-text">Быстрый выбор группы:</span>
-        <input v-model="letterInput" type="text" placeholder="ЦИС"/>
-        <input v-model="numberInput" type="number" placeholder="17"/>
-        <button class="search-button" @click="findGroupName">Перейти</button>
+        <input
+          v-model="letterInput"
+          type="text"
+          placeholder="ЦИС"
+        >
+        <input
+          v-model="numberInput"
+          type="number"
+          placeholder="17"
+        >
+        <button
+          class="search-button"
+          @click="findGroupName"
+        >
+          Перейти
+        </button>
       </div>
-      <div class="choise-fac-text" @click="selectFaculty('')">{{ choiceFac }}</div>
+      <div
+        class="choise-fac-text"
+        @click="selectFaculty('')"
+      >
+        {{ choiceFac }}
+      </div>
       <ul class="grid-container">
-        <li v-for="faculty in groupStore.faculties" :key="faculty.id" @click="selectFaculty(faculty.facultyName)">
-          <div class="item-faculty" :class="{'selected-faculty': faculty.facultyName=== selectedFacultyName}">
+        <li
+          v-for="faculty in groupStore.faculties"
+          :key="faculty.id"
+          @click="selectFaculty(faculty.facultyName)"
+        >
+          <div
+            class="item-faculty"
+            :class="{'selected-faculty': faculty.facultyName=== selectedFacultyName}"
+          >
             {{ faculty.facultyName }}
           </div>
         </li>
       </ul>
       <div class="fast-classes">
-        <span class="text-classes" @click="selectClass('')">{{ classes }}</span>
-        <div v-for="n in 5" :key="n" class="circle-classes" :class="{'selected-classes': n.toString()===selectedClass}"
-             @click="selectClass(n.toString())">{{ n }}
+        <span
+          class="text-classes"
+          @click="selectClass('')"
+        >{{ classes }}</span>
+        <div
+          v-for="n in 5"
+          :key="n"
+          class="circle-classes"
+          :class="{'selected-classes': n.toString()===selectedClass}"
+          @click="selectClass(n.toString())"
+        >
+          {{ n }}
         </div>
       </div>
-      <div class="choise-group-text">{{ choiceGroup }}</div>
+      <div class="choise-group-text">
+        {{ choiceGroup }}
+      </div>
       <div class="block-group">
         <ul class="group-grid-container">
-          <li v-for="group in extendedFlatGroupList" :key="group.id" class="group-grid-item">
-            <div v-if="group.groupUpName">{{ group.groupUpName }}</div>
+          <li
+            v-for="group in extendedFlatGroupList"
+            :key="group.id"
+            class="group-grid-item"
+          >
+            <div v-if="group.groupUpName">
+              {{ group.groupUpName }}
+            </div>
           </li>
         </ul>
       </div>
@@ -126,47 +167,52 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.search-button{
+
+.search-button {
   user-select: none;
-  border-radius: 5px;
-  font-size: 14px;
+  border-radius: 4px;
+  font-size: 16px;
   color: white;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background: rgb(237, 100, 100);
-  width: 110px;
-  height: 30px;
-  margin-left: 15px;
+  width: 112px;
+  height: 32px;
+  margin-left: 16px;
   transition: all 0.2s ease;
 }
+
 .search-button:active {
   transform: scale(0.95);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
 }
-.search-text{
-  margin-right: 20px;
+
+.search-text {
+  margin-right: 24px;
 }
-input{
-  font-size: 18px;
+
+input {
+  font-size: 16px;
   text-align: center;
   outline: none;
-  margin-left: 5px;
-  width: 70px;
-  height: 30px;
-  border-radius: 5px;
+  margin-left: 4px;
+  width: 72px;
+  height: 32px;
+  border-radius: 4px;
   box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  background: rgb(204, 204, 204);}
+  background: rgb(204, 204, 204);
+}
+
 .block-group {
   padding: 2vh;
 
   overflow: auto;
   overflow-x: hidden;
   width: 60vw;
-  height: calc(41vh + 9px);
+  height: calc(41vh + 8px);
   position: relative;
 }
 
 .group-grid-container {
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
@@ -179,20 +225,20 @@ input{
   box-shadow: 0px 4px 8px rgba(237, 100, 100, 0.5) !important;
 }
 
-.selected-classes{
+.selected-classes {
   background: rgb(237, 100, 100) !important;
   color: rgb(239, 239, 239) !important;
 
 }
 
 .group-grid-item {
-  transition: background 0.3s ease, box-shadow 0.3s ease,color 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   user-select: none;
   cursor: pointer;
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
-  padding: 5px;
+  padding: 4px;
   text-align: center;
   height: 6vh;
   color: rgb(65, 65, 65);
@@ -204,6 +250,7 @@ input{
   justify-content: center;
   align-items: center;
 }
+
 .group-grid-item:active {
   background: rgb(237, 100, 100) !important;
 
@@ -211,6 +258,7 @@ input{
   color: rgb(239, 239, 239) !important;
 
 }
+
 .grid-container {
   padding-top: 4vh;
 
@@ -233,7 +281,7 @@ input{
   user-select: none;
   cursor: pointer;
   color: rgb(65, 65, 65);
-  border-radius: 30px;
+  border-radius: 32px;
   background: rgb(217, 210, 210);
   padding: 2.3vw;
   text-align: center;
@@ -255,7 +303,7 @@ input{
 }
 
 .fast-group {
-  padding-top: 5vh;
+  padding-top: 4vh;
   color: rgb(53, 53, 53);
   font-size: 1.2vw;
   font-weight: 400;
@@ -270,17 +318,19 @@ input{
   align-items: center;
   padding-top: 3vh;
 }
-.text-classes{
+
+.text-classes {
   margin-right: 1vw;
   color: rgb(53, 53, 53);
 
 
 }
+
 .circle-classes {
   user-select: none;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background: rgb(217, 210, 210);
   border-radius: 50%;
   margin: 0.2vw;

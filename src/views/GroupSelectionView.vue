@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import GroupMenuComponent from "../components/Group/GroupMenuComponent.vue";
+import GroupMenuComponent from "../components/group/GroupMenuComponent.vue";
 export default defineComponent({
   components: {
     GroupMenuComponent

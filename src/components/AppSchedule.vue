@@ -18,7 +18,10 @@ const lessonLists = [
     <p class="app-schedule-title">
       Расписание занятий GroupName
     </p>
-    <div v-for="(lessonList, index) in lessonLists" :key="index">
+    <div
+      v-for="(lessonList, index) in lessonLists"
+      :key="index"
+    >
       <AppLessonList :lessons="lessonList" />
     </div>
   </div>

@@ -16,13 +16,20 @@ const showDropdown = computed(() => searchQuery.value.length > 0);
 <template>
   <div class="search-input-container">
     <input
-        class="input"
-        type="text"
-        placeholder="Введите название группы"
-        v-model="searchQuery"
+      v-model="searchQuery"
+      class="input"
+      type="text"
+      placeholder="Введите название группы"
     >
-    <div class="dropdown-menu" v-if="showDropdown">
-      <div v-for="group in filteredGroups" :key="group.id" class="dropdown-item">
+    <div
+      v-if="showDropdown"
+      class="dropdown-menu"
+    >
+      <div
+        v-for="group in filteredGroups"
+        :key="group.id"
+        class="dropdown-item"
+      >
         {{ group.name }}
       </div>
     </div>

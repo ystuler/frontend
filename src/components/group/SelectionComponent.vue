@@ -21,9 +21,12 @@
           />
         </div>
         <span v-if="holder=='Избранная группа будет тут...'">
-            <SearchMenuComponent></SearchMenuComponent>
+          <SearchMenuComponent />
         </span>
-        <span v-else class="favorite-group">{{ holder }}</span>
+        <span
+          v-else
+          class="favorite-group"
+        >{{ holder }}</span>
       </div>
       <div class="rectangle2">
         <div class="scroll-wrapper">
