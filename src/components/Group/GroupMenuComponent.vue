@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useGroupStore } from "../../stores/group.store.ts";
+import {computed, ref} from "vue";
+import {useGroupStore} from "../../stores/group.store.ts";
 
 const groupStore = useGroupStore();
 
@@ -12,14 +12,35 @@ const classes = ref<string>("Курс");
 const selectedFacultyName = ref<string>("");
 const selectedClass = ref<string>("");
 
+
 function selectFaculty(facultyName: string): void {
   selectedFacultyName.value = facultyName;
   selectedClass.value = "";
 }
 
+const flatGroupList = computed(() => {
+  const groups: (number | string )[] = [];
+  const filteredFaculties = groupStore.faculties.filter(faculty => faculty.facultyName === selectedFacultyName.value);
+
+  filteredFaculties.forEach(faculty => {
+    faculty.directions.forEach(direction => {
+      if (!selectedClass.value || direction.cursNumber === selectedClass.value) {
+        direction.listGroups.forEach(listGroup => {
+          listGroup.listUpGroups.forEach(listUpGroup => {
+            groups.push(listUpGroup);
+          });
+        });
+      }
+    });
+  });
+
+  return groups;
+});
+
 function selectClass(className: string): void {
   selectedClass.value = className;
 }
+
 const letterInput = ref('');
 const numberInput = ref('');
 const groupName = ref('');
@@ -49,8 +70,8 @@ const findGroupName = () => {
     groupName.value = 'Группа не найдена';
   }
 };
-</script>
 
+</script>
 
 
 <template>
@@ -69,30 +90,43 @@ const findGroupName = () => {
       </ul>
       <div class="fast-classes">
         <span class="text-classes" @click="selectClass('')">{{ classes }}</span>
-        <div v-for="n in 4" :key="n" class="circle-classes" @click="selectClass(n.toString())">{{ n }}</div>
+        <div v-for="n in 5" :key="n" class="circle-classes" @click="selectClass(n.toString())">{{ n }}</div>
       </div>
-      <div class="choise-group-text" >{{ choiceGroup }}</div>
-      <ul v-if="selectedFacultyName">
-        <li v-for="faculty in groupStore.faculties.filter(faculty => faculty.facultyName === selectedFacultyName)" :key="faculty.id">
-          <ul v-for="direction in faculty.directions.filter(direction => !selectedClass || direction.cursNumber === selectedClass)" :key="direction.id">
-            <li v-for="listGroup in direction.listGroups" :key="listGroup.id">
-              <ul>
-                <li v-for="listUpGroup in listGroup.listUpGroups" :key="listUpGroup.id">
-                  <div>{{ listUpGroup.groupUpName }}</div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-
+      <div class="choise-group-text">{{ choiceGroup }}</div>
+      <div class="block-group">
+        <ul class="group-grid-container">
+          <li v-for="group in flatGroupList" :key="group.id" class="group-grid-item">
+            <div>{{ group.groupUpName }}</div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 
 <style scoped>
+.block-group {
+  overflow: auto;
+  overflow-x: hidden;
+  width: 60vw;
+  height: calc(41vh + 9px);
+  position: relative;
+}
+
+.group-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Создает 4 колонки одинаковой ширины */
+  grid-gap: 10px; /* Устанавливает расстояние между элементами сетки */
+}
+
+.group-grid-item {
+  /* Убедитесь, что внешние и внутренние отступы не слишком велики */
+  padding: 5px; /* Пример внутреннего отступа, можно настроить */
+  margin: 0; /* Убедитесь, что внешний отступ минимален */
+  border: 1px solid #ccc; /* Пример рамки, можно настроить или удалить */
+  text-align: center; /* Для выравнивания текста, если нужно */
+}
 
 .grid-container {
   padding-top: 4vh;
@@ -105,7 +139,7 @@ const findGroupName = () => {
 }
 
 .choise-group-text {
-  padding-top: 3vh;
+  padding-top: 1vh;
 
 }
 
