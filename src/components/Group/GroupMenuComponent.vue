@@ -89,9 +89,10 @@ const findGroupName = () => {
   <div class="background">
     <div class="menu">
       <div class="fast-group">
-        <input v-model="letterInput" type="text" placeholder="Введите буквы"/>
-        <input v-model="numberInput" type="number" placeholder="Введите число"/>
-        <button @click="findGroupName">Найти группу</button>
+        <span class="search-text">Быстрый выбор группы:</span>
+        <input v-model="letterInput" type="text" placeholder="ЦИС"/>
+        <input v-model="numberInput" type="number" placeholder="17"/>
+        <button class="search-button" @click="findGroupName">Перейти</button>
       </div>
       <div class="choise-fac-text" @click="selectFaculty('')">{{ choiceFac }}</div>
       <ul class="grid-container">
@@ -121,7 +122,38 @@ const findGroupName = () => {
 
 
 <style scoped>
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.search-button{
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(237, 100, 100);
+  width: 110px;
+  height: 30px;
+  margin-left: 15px;
+  transition: all 0.2s ease;
+}
+.search-button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+.search-text{
+  margin-right: 20px;
+}
+input{
+  font-size: 18px;
+  text-align: center;
+  outline: none;
+  margin-left: 5px;
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(204, 204, 204);}
 .block-group {
   padding: 2vh;
 
@@ -228,7 +260,8 @@ const findGroupName = () => {
   font-weight: 400;
   line-height: 24px;
 
-
+  display: flex;
+  flex-direction: row;
 }
 
 .fast-classes {
