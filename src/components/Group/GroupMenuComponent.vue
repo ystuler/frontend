@@ -127,6 +127,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 .search-button{
+  user-select: none;
   border-radius: 5px;
   font-size: 14px;
   color: white;
