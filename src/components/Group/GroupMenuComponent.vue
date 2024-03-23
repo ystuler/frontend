@@ -13,7 +13,7 @@ const selectedClass = ref<string>("");
 
 const extendedFlatGroupList = computed(() => {
   const filledItems = flatGroupList.value.slice();
-  const totalItems = 20;
+  const totalItems = 16;
   const emptyItemsCount = totalItems - filledItems.length;
 
   for (let i = 0; i < emptyItemsCount; i++) {
@@ -112,7 +112,6 @@ const findGroupName = () => {
         <ul class="group-grid-container">
           <li v-for="group in extendedFlatGroupList" :key="group.id" class="group-grid-item">
             <div v-if="group.groupUpName">{{ group.groupUpName }}</div>
-            <div v-else class="empty-group"></div>
           </li>
         </ul>
       </div>
@@ -122,6 +121,7 @@ const findGroupName = () => {
 
 
 <style scoped>
+
 .block-group {
   padding: 2vh;
 
@@ -136,29 +136,53 @@ const findGroupName = () => {
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 20px;
 }
 
 .selected-faculty {
-  background-color: #8d5454 !important;
+
+  background: rgb(237, 100, 100) !important;
+  color: rgb(239, 239, 239) !important;
+  box-shadow: 0px 4px 8px rgba(237, 100, 100, 0.5) !important;
 }
+
 .selected-classes{
-  background-color: #4d84a8 !important;
+  background: rgb(237, 100, 100) !important;
+  color: rgb(239, 239, 239) !important;
 
 }
 
 .group-grid-item {
-  padding: 5px;
-  border: 1px solid #ccc;
-  text-align: center;
-  height: 5vh;
-}
+  transition: background 0.3s ease, box-shadow 0.3s ease,color 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
+  padding: 5px;
+  text-align: center;
+  height: 6vh;
+  color: rgb(65, 65, 65);
+
+  background: rgb(217, 210, 210);
+  font-size: 1vw;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.group-grid-item:active {
+  background: rgb(237, 100, 100) !important;
+
+  box-shadow: 0px 4px 8px rgba(237, 100, 100, 0.5) !important;
+  color: rgb(239, 239, 239) !important;
+
+}
 .grid-container {
   padding-top: 4vh;
 
   display: grid;
-  grid-template-columns: repeat(3, 15vw);
+  grid-template-columns: repeat(3, 17vw);
   grid-gap: 1vw;
   justify-content: center;
 
@@ -166,20 +190,28 @@ const findGroupName = () => {
 
 .choise-group-text {
   padding-top: 1vh;
-
+  color: rgb(105, 104, 104);
+  font-size: 1.5vw;
+  font-weight: 500;
+  line-height: 44px;
 }
 
 .item-faculty {
-  background-color: red;
-  padding: 2vw;
+  user-select: none;
+  cursor: pointer;
+  color: rgb(65, 65, 65);
+  border-radius: 30px;
+  background: rgb(217, 210, 210);
+  padding: 2.3vw;
   text-align: center;
   height: 3vw;
-  font-size: 0.9vw;
+  font-size: 1.1vw;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .background {
@@ -204,11 +236,18 @@ const findGroupName = () => {
   align-items: center;
   padding-top: 3vh;
 }
+.text-classes{
+  margin-right: 1vw;
+  color: rgb(53, 53, 53);
 
+
+}
 .circle-classes {
+  user-select: none;
+  cursor: pointer;
   width: 30px;
   height: 30px;
-  background-color: #3498db;
+  background: rgb(217, 210, 210);
   border-radius: 50%;
   margin: 0.2vw;
   display: flex;
