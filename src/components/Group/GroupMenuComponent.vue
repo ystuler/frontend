@@ -96,15 +96,19 @@ const findGroupName = () => {
       <div class="choise-fac-text" @click="selectFaculty('')">{{ choiceFac }}</div>
       <ul class="grid-container">
         <li v-for="faculty in groupStore.faculties" :key="faculty.id" @click="selectFaculty(faculty.facultyName)">
-          <div class="item-faculty">{{ faculty.facultyName }}</div>
+          <div class="item-faculty" :class="{'selected-faculty': faculty.facultyName=== selectedFacultyName}">
+            {{ faculty.facultyName }}
+          </div>
         </li>
       </ul>
       <div class="fast-classes">
         <span class="text-classes" @click="selectClass('')">{{ classes }}</span>
-        <div v-for="n in 5" :key="n" class="circle-classes" @click="selectClass(n.toString())">{{ n }}</div>
+        <div v-for="n in 5" :key="n" class="circle-classes" :class="{'selected-classes': n.toString()===selectedClass}"
+             @click="selectClass(n.toString())">{{ n }}
+        </div>
       </div>
       <div class="choise-group-text">{{ choiceGroup }}</div>
-      <div class="block-group" >
+      <div class="block-group">
         <ul class="group-grid-container">
           <li v-for="group in extendedFlatGroupList" :key="group.id" class="group-grid-item">
             <div v-if="group.groupUpName">{{ group.groupUpName }}</div>
@@ -135,6 +139,14 @@ const findGroupName = () => {
   grid-gap: 10px;
 }
 
+.selected-faculty {
+  background-color: #8d5454 !important;
+}
+.selected-classes{
+  background-color: #4d84a8 !important;
+
+}
+
 .group-grid-item {
   padding: 5px;
   border: 1px solid #ccc;
@@ -158,7 +170,7 @@ const findGroupName = () => {
 }
 
 .item-faculty {
-  background-color: #fa0000;
+  background-color: red;
   padding: 2vw;
   text-align: center;
   height: 3vw;
