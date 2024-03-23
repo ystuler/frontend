@@ -4,7 +4,6 @@ import {useGroupStore} from "../../stores/group.store.ts";
 
 const groupStore = useGroupStore();
 
-const fastChoiceGroup = ref<string>("Быстрый выбор группы:");
 const choiceFac = ref<string>("Выберите институт:");
 const choiceGroup = ref<string>("Выберите группу:");
 const classes = ref<string>("Курс");
@@ -12,6 +11,17 @@ const classes = ref<string>("Курс");
 const selectedFacultyName = ref<string>("");
 const selectedClass = ref<string>("");
 
+const extendedFlatGroupList = computed(() => {
+  const filledItems = flatGroupList.value.slice();
+  const totalItems = 20;
+  const emptyItemsCount = totalItems - filledItems.length;
+
+  for (let i = 0; i < emptyItemsCount; i++) {
+    filledItems.push({id: `empty-${i}`, groupUpName: ''});
+  }
+
+  return filledItems;
+});
 
 function selectFaculty(facultyName: string): void {
   selectedFacultyName.value = facultyName;
@@ -19,7 +29,8 @@ function selectFaculty(facultyName: string): void {
 }
 
 const flatGroupList = computed(() => {
-  const groups: (number | string )[] = [];
+  //todo сделать нормальный тип данных для groups
+  const groups = [];
   const filteredFaculties = groupStore.faculties.filter(faculty => faculty.facultyName === selectedFacultyName.value);
 
   filteredFaculties.forEach(faculty => {
@@ -93,10 +104,11 @@ const findGroupName = () => {
         <div v-for="n in 5" :key="n" class="circle-classes" @click="selectClass(n.toString())">{{ n }}</div>
       </div>
       <div class="choise-group-text">{{ choiceGroup }}</div>
-      <div class="block-group">
+      <div class="block-group" >
         <ul class="group-grid-container">
-          <li v-for="group in flatGroupList" :key="group.id" class="group-grid-item">
-            <div>{{ group.groupUpName }}</div>
+          <li v-for="group in extendedFlatGroupList" :key="group.id" class="group-grid-item">
+            <div v-if="group.groupUpName">{{ group.groupUpName }}</div>
+            <div v-else class="empty-group"></div>
           </li>
         </ul>
       </div>
@@ -107,6 +119,8 @@ const findGroupName = () => {
 
 <style scoped>
 .block-group {
+  padding: 2vh;
+
   overflow: auto;
   overflow-x: hidden;
   width: 60vw;
@@ -115,17 +129,17 @@ const findGroupName = () => {
 }
 
 .group-grid-container {
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Создает 4 колонки одинаковой ширины */
-  grid-gap: 10px; /* Устанавливает расстояние между элементами сетки */
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
 }
 
 .group-grid-item {
-  /* Убедитесь, что внешние и внутренние отступы не слишком велики */
-  padding: 5px; /* Пример внутреннего отступа, можно настроить */
-  margin: 0; /* Убедитесь, что внешний отступ минимален */
-  border: 1px solid #ccc; /* Пример рамки, можно настроить или удалить */
-  text-align: center; /* Для выравнивания текста, если нужно */
+  padding: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  height: 5vh;
 }
 
 .grid-container {
