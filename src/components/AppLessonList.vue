@@ -30,7 +30,7 @@ const lessons = computed(() => lessonStore.lessons)
 <style scoped>
 
 .app-lesson-list {
-  max-width: 1200px;
+  width: 100%;
   min-height: 120px;
   background-color: rgb(239, 239, 239);
   border-radius: 20px;

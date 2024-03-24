@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Все окно с расписанием
-import AppLessonList from './AppLessonList.vue';
+import AppLessonListV2 from './AppLessonListV2.vue';
 const lessonLists = [
   // я хз что с этим сделать ыыы
   {},
@@ -22,7 +22,7 @@ const lessonLists = [
       v-for="(lessonList, index) in lessonLists"
       :key="index"
     >
-      <AppLessonList :lessons="lessonList" />
+      <AppLessonListV2 :lessons="lessonList" />
     </div>
   </div>
 </template>
@@ -31,20 +31,18 @@ const lessonLists = [
 <style scoped>
 .app-schedule-title {
   font-size: 32px;
-  margin-top: 44px;
   font-weight: 600;
 }
 
 .app-schedule-container {
-  width: 50vw;
-  height: 100vh;
-  min-width: 480px;
+  max-height: 100vh;
   border-left: 2px solid rgb(199, 199, 199);
   border-right: 2px solid rgb(199, 199, 199);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  padding: 0 64px;
+  padding: 44px 64px;
+  overflow-y: auto;
 }
 </style>
