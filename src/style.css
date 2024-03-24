@@ -17,9 +17,9 @@
 }
 
 /* Mobile, Landscape */
-@media (max-width: 1134px) and (min-aspect-ratio: 6/5) {
+@media (max-width: 1134px) {
   body {
-    font-size: calc(10 * 100vw / 480);
+    font-size: calc(11 * 100vw / 480);
   }
 }
 /* Desktop */
