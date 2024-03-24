@@ -59,7 +59,6 @@ import AppInput from './AppInput.vue';
   border-radius: 35px;
   margin-top: 20px;
   color:#EFEFEF;
-  font-size: 24px;
   box-shadow: 1px 4px 4px rgba(126, 11, 11, 0.5);
 }
 .date-time-container {
@@ -68,7 +67,6 @@ import AppInput from './AppInput.vue';
   gap: 20px;
 }
 .app-add-lesson-title {
-  font-size: 28px;
   font-weight: 700;
   text-align: center;
 }

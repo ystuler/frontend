@@ -88,12 +88,10 @@ defineProps<AppInputProps>();
   padding: 8px 16px;
   background-color: #D9D9D9;
   color: #9D9D9D;
-  font-size: 12px;
   border-radius: 10px;
   box-shadow: inset 0px 2px 8px rgba(56, 55, 55, 0.253);
 }
 .app-input-lable{
-  font-size: 16px;
   color: #9A9696;
 }
 .app-input-container{

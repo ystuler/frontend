@@ -91,7 +91,6 @@ const lessons = computed(() => lessonStore.lessons);
 }
 
 .app-lesson-list__day {
-  font-size: 24px;
   font-weight: 600;
 }
 

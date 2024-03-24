@@ -23,7 +23,10 @@ const closeModal = () => {
 
 <template>
   <div class="main-container">
-    <AppModal v-if="isModalOpen">
+    <AppModal
+      v-if="isModalOpen"
+      @close="closeModal"
+    >
       <AppAddLesson />
     </AppModal>
     <div class="main-container-block">

@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+export interface AppModalEmits {
+  (e: 'close'): void;
+}
+
+const emit = defineEmits<AppModalEmits>();
+
+const close = () => emit('close');
+</script>
 
 <template>
   <Teleport to="body">
-    <div class="app-modal">
+    <div class="app-modal" @click="close">
       <slot />
     </div>
   </Teleport>

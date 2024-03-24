@@ -30,7 +30,7 @@ const lessonLists = [
 
 <style scoped>
 .app-schedule-title {
-  font-size: 32px;
+
   font-weight: 600;
 }
 
