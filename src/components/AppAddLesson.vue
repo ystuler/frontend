@@ -73,7 +73,7 @@ import AppInput from './AppInput.vue';
 .app-add-lesson-container {
   width: 100%;
   border-radius: 30px;
-  background-color: #EFEFEF;
+  background-color: rgb(244, 242, 242);
   display: flex;
   flex-direction: column;
   gap: 20px;
