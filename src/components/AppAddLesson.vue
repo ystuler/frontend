@@ -91,6 +91,7 @@ import AppInput from './AppInput.vue';
 @media (min-width: 1134px) and (min-aspect-ratio: 6/5) {
   .app-add-lesson-container {
     padding: calc(16 * 100vw / 480) calc(8 * 100vw / 480);
+    margin: 8%;
   }
 }
 /* Wide (Ultra Wide) Monitors */
@@ -98,6 +99,7 @@ import AppInput from './AppInput.vue';
   
   .app-add-lesson-container {
     padding: calc(4 * 100vw / 480);
+    margin: 8%;
   }
 }
 </style>

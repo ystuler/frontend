@@ -11,6 +11,7 @@ import AddLessonIcon from '../components/icons/AddLessonIcon.vue'
 <style scoped>
 .add-lesson-button{
   width: 10vw;
+  max-width: 60px;
   background-color: rgb(235, 235, 235);
   padding: 4px;
   border-radius: 60%;
