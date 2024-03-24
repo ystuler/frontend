@@ -76,8 +76,28 @@ import AppInput from './AppInput.vue';
   background-color: #EFEFEF;
   display: flex;
   flex-direction: column;
-  padding: 44px 60px;
   gap: 20px;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.205);
+}
+
+/* Mobile, Landscape */
+@media (max-width: 1134px) {
+  .app-add-lesson-container {
+    padding: calc(56 * 100vw / 480) calc(40 * 100vw / 480);
+    margin: 8%;
+  }
+}
+/* Desktop */
+@media (min-width: 1134px) and (min-aspect-ratio: 6/5) {
+  .app-add-lesson-container {
+    padding: calc(16 * 100vw / 480) calc(8 * 100vw / 480);
+  }
+}
+/* Wide (Ultra Wide) Monitors */
+@media (min-width: 1134px) and (min-aspect-ratio: 5/2) {
+  
+  .app-add-lesson-container {
+    padding: calc(4 * 100vw / 480);
+  }
 }
 </style>

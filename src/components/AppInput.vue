@@ -97,7 +97,7 @@ defineProps<AppInputProps>();
 .app-input-container{
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 .app-input:focus {
   outline: 1px solid rgb(231, 136, 112);
