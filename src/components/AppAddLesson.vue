@@ -73,7 +73,7 @@ import AppInput from './AppInput.vue';
   text-align: center;
 }
 .app-add-lesson-container {
-  max-width: 800px;
+  width: 100%;
   border-radius: 30px;
   background-color: #EFEFEF;
   display: flex;

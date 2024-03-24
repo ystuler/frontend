@@ -12,55 +12,47 @@ defineProps<AppLessonProps>();
 </script>
 
 <template>
-  <div class="app-lesson-info">
-    <p class="time">
-      {{ timeStart }} - {{ timeEnd }}
-    </p>
-    <p class="name">
+  <tr class="app-lesson">
+    <td class="app-lesson__time-start">
+      {{ timeStart }}
+    </td>
+    <td class="app-lesson__time-end">
+      {{ timeEnd }}
+    </td>
+    <td class="app-lesson__name">
       {{ name }}
-    </p>
-    <p class="teacher">
+    </td>
+    <td class="app-lesson__teacher">
       {{ teacher }}
-    </p>
-    <p class="subgroup">
+    </td>
+    <td class="app-lesson__subgroup">
       {{ subgroup }}
-    </p>
-    <p class="audience">
+    </td>
+    <td class="app-lesson__audience">
       {{ audience }}
-    </p>
-  </div>
+    </td>
+  </tr>
 </template>
 
 <style scoped>
-.app-lesson-info {
-  font-size: 20px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+.app-lesson {
+  border-bottom: 1px solid #3331;
+}
+
+.app-lesson td {
+  padding: 4px 8px;
+}
+
+.app-lesson__name {
+  width: 40%;
+}
+
+.app-lesson__subgroup,
+.app-lesson__audience,
+.app-lesson__teacher,
+.app-lesson__time-start,
+.app-lesson__time-end
+{
   text-align: center;
-}
-
-.time {
-  width: 140px;
-}
-
-.name {
-  max-width: 400px;
-  overflow: hidden;
-  white-space: nowrap;
-  flex-grow: 1;
-}
-
-.teacher {
-  width: 240px;
-}
-
-.subgroup {
-  font-size: 20px;
-  width: 40px;
-}
-
-.audience {
-  width: 100px;
 }
 </style>
