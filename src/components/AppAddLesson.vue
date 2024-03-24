@@ -68,7 +68,7 @@ import AppInput from './AppInput.vue';
   gap: 20px;
 }
 .app-add-lesson-title {
-  font-size: 44px;
+  font-size: 28px;
   font-weight: 700;
   text-align: center;
 }
