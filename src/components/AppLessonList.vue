@@ -53,7 +53,7 @@ const lessons = computed(() => lessonStore.lessons);
           </th>
           <th
             scope="col"
-            class="lesson-table__column"
+            class="lesson-table_column"
           >
             Аудитория
           </th>

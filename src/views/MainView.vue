@@ -45,7 +45,7 @@ const closeModal = () => {
 </template>
 
 <style scoped>
-
+/*переписать по новому*/ 
 @media screen and (width < 1200px) {
   .app-add-lesson-expanded {
     display: none;

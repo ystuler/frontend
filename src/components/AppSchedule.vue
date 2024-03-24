@@ -40,19 +40,20 @@ const lessonLists = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
   overflow-y: auto;
 }
 /* Mobile, Landscape */
 @media (max-width: 1134px) {
   .app-schedule-container {
     padding: calc(20 * 100vw / 480);
+    gap: 8px;
   }
 }
 /* Desktop */
 @media (min-width: 1134px) and (min-aspect-ratio: 6/5) {
   .app-schedule-container {
     padding: calc(10 * 100vw / 480);
+    gap: 24px;
   }
 }
 /* Wide (Ultra Wide) Monitors */
@@ -60,6 +61,7 @@ const lessonLists = [
   
   .app-schedule-container {
     padding: calc(4 * 100vw / 480);
+    gap: 24px;
   }
 }
 </style>
