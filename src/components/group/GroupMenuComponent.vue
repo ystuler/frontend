@@ -168,7 +168,10 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+
 .search-button {
+  justify-content: center;
+  align-items: center;
   user-select: none;
   border-radius: 4px;
   font-size: 16px;
@@ -361,5 +364,50 @@ input {
   padding-left: 72px;
   padding-right: 72px;
 
+}
+@media screen and (max-width: 480px) {
+  .menu {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0px;
+  }
+  .menu > * {
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+  .fast-group {
+    padding-top: 4vh;
+    color: rgb(53, 53, 53);
+    font-size: 4vw;
+    line-height: 4vh;
+
+  }
+  input {
+    font-size: 3.2vw;
+    text-align: center;
+    outline: none;
+    margin-left: 4px;
+    width: 12vw;
+    height: 4vh;
+    border-radius: 4px;
+
+  }
+  .search-text {
+    margin-right: 0px;
+  }
+  .search-button {
+    font-size: 2vw;
+    width: 18vw;
+    height: 4vh;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .search-button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  }
 }
 </style>
