@@ -20,6 +20,10 @@
 @media (max-width: 1134px) {
   body {
     font-size: calc(11 * 100vw / 480);
+    font-weight: 500; /*контрастнее для телефонов*/ 
+  }
+  h2 {
+    font-size: calc(20 * 100vw / 480);
   }
 }
 /* Desktop */
@@ -27,13 +31,16 @@
   body {
     font-size: calc(20 * 100vw / 1920);
   }
-  .input-text {
-    font-size: calc(20 * 100vw / 1920);
+  h2 {
+    font-size: calc(10 * 100vw / 480);
   }
 }
 /* Wide (Ultra Wide) Monitors */
 @media (min-width: 1134px) and (min-aspect-ratio: 5/2) {
   body {
     font-size: calc(22 * 100vw / 2560);
+  }
+  h2 {
+    font-size: calc(12 * 100vw / 480);
   }
 }
