@@ -42,7 +42,7 @@ const closeModal = () => {
 </template>
 
 <style scoped>
-@media screen and (width < 1000px) {
+@media screen and (width < 1200px) {
   .app-add-lesson-expanded {
     display: none;
   }
@@ -53,7 +53,7 @@ const closeModal = () => {
     width: 5%;
   }
 }
-@media screen and (width >= 1000px) {
+@media screen and (width >= 1200px) {
   .app-add-lesson-mini {
     display: none;
   }
@@ -68,7 +68,7 @@ const closeModal = () => {
   top: 52px;
 }
 .main-container-block__add-lesson {
-  padding: 0 32px;
+  padding: 0 16px;
 }
 .main-container-block {
   width: 100%;
@@ -77,7 +77,7 @@ const closeModal = () => {
 }
 .main-container {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   justify-content: center;
   align-items: center;
 }
