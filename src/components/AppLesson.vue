@@ -35,12 +35,29 @@ defineProps<AppLessonProps>();
 </template>
 
 <style scoped>
-.app-lesson {
-  border-bottom: 1px solid #3331;
+
+/* Mobile */
+@media (max-width: 1134px) {
+  .app-lesson td {
+    padding: 2px 6px;
+  }
+}
+/* Desktop */
+@media (min-width: 1134px) and (min-aspect-ratio: 6/5) {
+  .app-lesson td  {
+    padding: 4px 8px;
+  }
+  
+}
+/* Wide (Ultra Wide) Monitors */
+@media (min-width: 1134px) and (min-aspect-ratio: 5/2) {
+  .app-lesson td  {
+    padding: 4px 8px;
+  }
 }
 
-.app-lesson td {
-  padding: 4px 8px;
+.app-lesson {
+  border-bottom: 1px solid #3331;
 }
 
 .app-lesson__name {

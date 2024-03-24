@@ -10,7 +10,10 @@ const close = () => emit('close');
 
 <template>
   <Teleport to="body">
-    <div class="app-modal" @click="close">
+    <div
+      class="app-modal"
+      @click="close"
+    >
       <slot />
     </div>
   </Teleport>

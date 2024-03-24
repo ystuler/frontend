@@ -12,10 +12,10 @@ const openModal = () => {
   isModalOpen.value = true;
 }
 
-const editSchedule = () => {
+/*const editSchedule = () => {
   closeModal();
 } 
-
+*/
 const closeModal = () => {
   isModalOpen.value = false;
 }
@@ -27,7 +27,7 @@ const closeModal = () => {
       v-if="isModalOpen"
       @close="closeModal"
     >
-      <AppAddLesson />
+      <AppAddLesson @click.stop />
     </AppModal>
     <div class="main-container-block">
       <AppSchedule class="main-container-block__schedule" />
@@ -45,6 +45,7 @@ const closeModal = () => {
 </template>
 
 <style scoped>
+
 @media screen and (width < 1200px) {
   .app-add-lesson-expanded {
     display: none;
@@ -55,20 +56,29 @@ const closeModal = () => {
   .main-container-block.main-container-block__add-lesson {
     width: 5%;
   }
+  .main-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 @media screen and (width >= 1200px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
   .app-add-lesson-mini {
     display: none;
   }
 }
+
 .main-container-block__schedule {
   width: 100%;
 }
 .app-add-lesson-mini {
   flex-shrink: none;
   position: fixed;
-  right: 52px;
-  top: 52px;
+  right: 4%;
+  top: 4%;
 }
 .main-container-block__add-lesson {
   padding: 0 16px;
@@ -79,8 +89,6 @@ const closeModal = () => {
   justify-content: center;
 }
 .main-container {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
   justify-content: center;
   align-items: center;
 }

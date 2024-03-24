@@ -53,7 +53,7 @@ const lessons = computed(() => lessonStore.lessons);
           </th>
           <th
             scope="col"
-            class="lesson-table_column"
+            class="lesson-table__column"
           >
             Аудитория
           </th>
@@ -80,13 +80,12 @@ const lessons = computed(() => lessonStore.lessons);
 
 .app-lesson-list {
   width: 100%;
-  min-height: 120px;
   background-color: rgb(239, 239, 239);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 16px 20px;
+  gap: 16px;
+  padding: 16px 3vw;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 
@@ -104,5 +103,29 @@ const lessons = computed(() => lessonStore.lessons);
 
 .lesson-table__column {
   padding: 4px 8px;
+}
+
+@media (max-aspect-ratio: 6/5) {
+  .lesson-table__column {
+    font-weight: 800;
+  }
+}
+/* Mobile, Landscape */
+@media (max-width: 1134px) and (min-aspect-ratio: 6/5) {
+  .lesson-table__column {
+    font-weight: 800;
+  }
+}
+/* Desktop */
+@media (min-width: 1134px) and (min-aspect-ratio: 6/5) {
+  .lesson-table__column {
+    font-weight: 600;
+  }
+}
+/* Wide (Ultra Wide) Monitors */
+@media (min-width: 1134px) and (min-aspect-ratio: 5/2) {
+  .lesson-table__column {
+    font-weight: 600;
+  }
 }
 </style>

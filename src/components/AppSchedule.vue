@@ -15,9 +15,9 @@ const lessonLists = [
 
 <template>
   <div class="app-schedule-container">
-    <p class="app-schedule-title">
+    <h2 class="app-schedule-title">
       Расписание занятий GroupName
-    </p>
+    </h2>
     <div
       v-for="(lessonList, index) in lessonLists"
       :key="index"
@@ -30,7 +30,6 @@ const lessonLists = [
 
 <style scoped>
 .app-schedule-title {
-
   font-weight: 600;
 }
 
@@ -42,7 +41,25 @@ const lessonLists = [
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  padding: 44px 64px;
   overflow-y: auto;
+}
+/* Mobile, Landscape */
+@media (max-width: 1134px) {
+  .app-schedule-container {
+    padding: calc(20 * 100vw / 480);
+  }
+}
+/* Desktop */
+@media (min-width: 1134px) and (min-aspect-ratio: 6/5) {
+  .app-schedule-container {
+    padding: calc(10 * 100vw / 480);
+  }
+}
+/* Wide (Ultra Wide) Monitors */
+@media (min-width: 1134px) and (min-aspect-ratio: 5/2) {
+  
+  .app-schedule-container {
+    padding: calc(4 * 100vw / 480);
+  }
 }
 </style>

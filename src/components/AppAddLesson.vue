@@ -5,9 +5,9 @@ import AppInput from './AppInput.vue';
 
 <template>
   <div class="app-add-lesson-container">
-    <p class="app-add-lesson-title">
+    <h2 class="app-add-lesson-title">
       Дополнить расписание
-    </p>
+    </h2>
     <div class="date-time-container">
       <AppInput 
         id="start-time"
